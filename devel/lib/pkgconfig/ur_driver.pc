@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: ur_driver
+Description: Description of ur_driver
+Version: 1.2.5
+Cflags: -I/home/haoran/US_UR3/devel/include
+Libs: -L/home/haoran/US_UR3/devel/lib 
+Requires: dynamic_reconfigure
