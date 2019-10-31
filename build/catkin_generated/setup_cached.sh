@@ -7,9 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/haoran/US_UR3/devel:$CMAKE_PREFIX_PATH"
 export GAZEBO_MODEL_PATH="/opt/ros/kinetic/share/osrf_gear/models:$GAZEBO_MODEL_PATH"
-export LD_LIBRARY_PATH="/home/haoran/US_UR3/devel/lib:$LD_LIBRARY_PATH"
 export PWD="/home/haoran/US_UR3/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/haoran/US_UR3/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/haoran/US_UR3/src:$ROS_PACKAGE_PATH"

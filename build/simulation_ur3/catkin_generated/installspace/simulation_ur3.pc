@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/install
+
+Name: simulation_ur3
+Description: Description of simulation_ur3
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/haoran/US_UR3/install/lib 
+Requires: 

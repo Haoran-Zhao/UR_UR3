@@ -1433,6 +1433,24 @@ clean: universal_robot/ur_msgs/CMakeFiles/ur_msgs_generate_messages_cpp.dir/clea
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory simulation_ur3
+
+# Convenience name for "all" pass in the directory.
+simulation_ur3/all:
+
+.PHONY : simulation_ur3/all
+
+# Convenience name for "clean" pass in the directory.
+simulation_ur3/clean:
+
+.PHONY : simulation_ur3/clean
+
+# Convenience name for "preinstall" pass in the directory.
+simulation_ur3/preinstall:
+
+.PHONY : simulation_ur3/preinstall
+
+#=============================================================================
 # Directory level rules for directory universal_robot/ur_bringup
 
 # Convenience name for "all" pass in the directory.
