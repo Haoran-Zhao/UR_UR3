@@ -1,16 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
-  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
-  <arg name="gui" default="true" doc="Starts gazebo gui" />
-  <arg name="sim" default="true" />
-  <arg name="debug" default="false" />
-
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" default="worlds/empty.world"/>
-    <arg name="paused" value="$(arg paused)"/>
-    <arg name="gui" value="$(arg gui)"/>
   </include>
 
   <!-- spwan ur3 -->
@@ -36,20 +28,11 @@
     <arg name="debug" default="$(arg debug)" />
   </include>
 
-  <!-- Launch moveit_rviz -->
-  <arg unless="$(arg debug)" name="launch_prefix" value="" />
-  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+  <!-- spawn the conveyor_belt in gazebo -->
+  <node name="spawn_conveyor_belt" pkg="gazebo_ros" type="spawn_model" args="-file $(find ur5_notebook)/urdf/conveyor_belt.urdf -urdf -model conveyor_belt" />
+  <!-- spawn the conveyor_belt in gazebo -->
+  <node name="bin" pkg="gazebo_ros" type="spawn_model" args="-file $(find ur5_notebook)/urdf/bin.urdf -urdf -model bin -y 0.8 -x -0.5 -z 0.05" />
 
-  <arg name="config" default="true" />
-  <arg unless="$(arg config)" name="command_args" value="" />
-  <arg     if="$(arg config)" name="command_args" value="-d $(find ur3_moveit_config)/launch/moveit.rviz" />
-
-  <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
-	args="$(arg command_args)" output="screen">
-    <rosparam command="load" file="$(find ur3_moveit_config)/config/kinematics.yaml"/>
-  </node>
-
-  <!-- spawn in gazebo -->
 
   <!-- publisher node -->
 
