@@ -1,10 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(WARNING "Invoking generate_messages() without having added any message or service file before.
-You should either add add_message_files() and/or add_service_files() calls or remove the invocation of generate_messages().")
-message(STATUS "simulation_ur3: 0 messages, 0 services")
+message(STATUS "simulation_ur3: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Isimulation_ur3:/home/haoran/US_UR3/src/simulation_ur3/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -19,12 +17,23 @@ add_custom_target(simulation_ur3_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" NAME_WE)
+add_custom_target(_simulation_ur3_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "simulation_ur3" "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" ""
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
+_generate_msg_cpp(simulation_ur3
+  "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/simulation_ur3
+)
 
 ### Generating Services
 
@@ -40,6 +49,8 @@ add_custom_target(simulation_ur3_generate_messages_cpp
 add_dependencies(simulation_ur3_generate_messages simulation_ur3_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" NAME_WE)
+add_dependencies(simulation_ur3_generate_messages_cpp _simulation_ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(simulation_ur3_gencpp)
@@ -50,6 +61,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS simulation_ur3_generate_messages_cp
 
 ### Section generating for lang: geneus
 ### Generating Messages
+_generate_msg_eus(simulation_ur3
+  "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/simulation_ur3
+)
 
 ### Generating Services
 
@@ -65,6 +82,8 @@ add_custom_target(simulation_ur3_generate_messages_eus
 add_dependencies(simulation_ur3_generate_messages simulation_ur3_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" NAME_WE)
+add_dependencies(simulation_ur3_generate_messages_eus _simulation_ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(simulation_ur3_geneus)
@@ -75,6 +94,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS simulation_ur3_generate_messages_eu
 
 ### Section generating for lang: genlisp
 ### Generating Messages
+_generate_msg_lisp(simulation_ur3
+  "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/simulation_ur3
+)
 
 ### Generating Services
 
@@ -90,6 +115,8 @@ add_custom_target(simulation_ur3_generate_messages_lisp
 add_dependencies(simulation_ur3_generate_messages simulation_ur3_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" NAME_WE)
+add_dependencies(simulation_ur3_generate_messages_lisp _simulation_ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(simulation_ur3_genlisp)
@@ -100,6 +127,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS simulation_ur3_generate_messages_li
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
+_generate_msg_nodejs(simulation_ur3
+  "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/simulation_ur3
+)
 
 ### Generating Services
 
@@ -115,6 +148,8 @@ add_custom_target(simulation_ur3_generate_messages_nodejs
 add_dependencies(simulation_ur3_generate_messages simulation_ur3_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" NAME_WE)
+add_dependencies(simulation_ur3_generate_messages_nodejs _simulation_ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(simulation_ur3_gennodejs)
@@ -125,6 +160,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS simulation_ur3_generate_messages_no
 
 ### Section generating for lang: genpy
 ### Generating Messages
+_generate_msg_py(simulation_ur3
+  "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/simulation_ur3
+)
 
 ### Generating Services
 
@@ -140,6 +181,8 @@ add_custom_target(simulation_ur3_generate_messages_py
 add_dependencies(simulation_ur3_generate_messages simulation_ur3_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/haoran/US_UR3/src/simulation_ur3/msg/Tracker.msg" NAME_WE)
+add_dependencies(simulation_ur3_generate_messages_py _simulation_ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(simulation_ur3_genpy)

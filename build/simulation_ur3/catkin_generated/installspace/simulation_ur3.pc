@@ -3,6 +3,6 @@ prefix=/home/haoran/US_UR3/install
 Name: simulation_ur3
 Description: Description of simulation_ur3
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/haoran/US_UR3/install/include
 Libs: -L/home/haoran/US_UR3/install/lib 
-Requires: 
+Requires: message_runtime

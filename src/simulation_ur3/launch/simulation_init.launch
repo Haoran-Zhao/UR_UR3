@@ -61,6 +61,8 @@
   <!-- spawn the conveyor_belt in gazebo -->
   <node name="table" pkg="gazebo_ros" type="spawn_model" args="-file $(find simulation_ur3)/urdf/table.sdf -sdf -model table" />
   <node name="bin" pkg="gazebo_ros" type="spawn_model" args="-file $(find simulation_ur3)/urdf/bin.urdf -urdf -model bin -z 1.15 -x -0.55" />
+  <node name="keys_to_tracker" pkg="simulation_ur3" type="keys_to_tracker.py" output="screen" />
+  <node name="ur3_teleop" pkg="simulation_ur3" type="ur3_teleop.py" output="screen" />
 
   <!-- publisher node -->
 
