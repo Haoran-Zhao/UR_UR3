@@ -154,7 +154,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(simulation_ur3_EXPORTED_TARGETS "")
+set(simulation_ur3_EXPORTED_TARGETS "simulation_ur3_generate_messages_cpp;simulation_ur3_generate_messages_eus;simulation_ur3_generate_messages_lisp;simulation_ur3_generate_messages_nodejs;simulation_ur3_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${simulation_ur3_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -191,7 +191,7 @@ foreach(depend ${depends})
   list(APPEND simulation_ur3_EXPORTED_TARGETS ${${simulation_ur3_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "simulation_ur3-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${simulation_ur3_DIR}/${extra})
