@@ -65,7 +65,7 @@ if __name__=="__main__":
                 right = 0
                 forward = 0
                 backward = 0
-                init_posistion = key_states[key][0]
+                init_position = key_states[key][0]
                 init_joint = key_states[key][1]
 
             else:

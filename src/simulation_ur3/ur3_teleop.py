@@ -176,6 +176,8 @@ class ur3_teleop:
             self.arm.execute(plan)
         elif self.init_position:
             start_pose = self.arm.get_current_pose(self.end_effector_link).pose
+
+            print(start_pose)
             # Initialize the waypoints list
             self.waypoints = []
             # Set the first waypoint to be the starting pose
@@ -186,7 +188,9 @@ class ur3_teleop:
             wpose.position.y = 0.11260
             wpose.position.z = 0.2993
 
+            print(wpose)
             self.waypoints.append(deepcopy(wpose))
+            self.arm.set_start_state_to_current_state()
             position_offset = np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.y-start_pose.position.y)**2 \
                 +(wpose.position.z-start_pose.position.z)**2)
             rospy.loginfo(position_offset)
