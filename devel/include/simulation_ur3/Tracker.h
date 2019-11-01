@@ -28,14 +28,20 @@ struct Tracker_
     , down(0.0)
     , left(0.0)
     , right(0.0)
-    , init(false)  {
+    , forward(0.0)
+    , backward(0.0)
+    , init_joint(false)
+    , init_position(false)  {
     }
   Tracker_(const ContainerAllocator& _alloc)
     : up(0.0)
     , down(0.0)
     , left(0.0)
     , right(0.0)
-    , init(false)  {
+    , forward(0.0)
+    , backward(0.0)
+    , init_joint(false)
+    , init_position(false)  {
   (void)_alloc;
     }
 
@@ -53,8 +59,17 @@ struct Tracker_
    typedef double _right_type;
   _right_type right;
 
-   typedef uint8_t _init_type;
-  _init_type init;
+   typedef double _forward_type;
+  _forward_type forward;
+
+   typedef double _backward_type;
+  _backward_type backward;
+
+   typedef uint8_t _init_joint_type;
+  _init_joint_type init_joint;
+
+   typedef uint8_t _init_position_type;
+  _init_position_type init_position;
 
 
 
@@ -134,12 +149,12 @@ struct MD5Sum< ::simulation_ur3::Tracker_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4403fe424018d01642c7d5f64d2fbe63";
+    return "8c54a711bf68e69302a10bb7bfb7ca79";
   }
 
   static const char* value(const ::simulation_ur3::Tracker_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4403fe424018d016ULL;
-  static const uint64_t static_value2 = 0x42c7d5f64d2fbe63ULL;
+  static const uint64_t static_value1 = 0x8c54a711bf68e693ULL;
+  static const uint64_t static_value2 = 0x02a10bb7bfb7ca79ULL;
 };
 
 template<class ContainerAllocator>
@@ -161,11 +176,15 @@ struct Definition< ::simulation_ur3::Tracker_<ContainerAllocator> >
     return "# message type to describe the tracking information of the blocks\n\
 # to be published as a topic\n\
 \n\
-float64 up  # move up\n\
-float64 down  # move down\n\
-float64 left  # move left\n\
-float64 right  # move down\n\
-bool init #initialize pose\n\
+float64 up  # move up z+\n\
+float64 down  # move down z-\n\
+float64 left  # move left y+\n\
+float64 right  # move down y-\n\
+float64 forward  # move forward x+\n\
+float64 backward  # move backward x-\n\
+\n\
+bool init_joint #initialize joint\n\
+bool init_position #initialize position\n\
 ";
   }
 
@@ -188,7 +207,10 @@ namespace serialization
       stream.next(m.down);
       stream.next(m.left);
       stream.next(m.right);
-      stream.next(m.init);
+      stream.next(m.forward);
+      stream.next(m.backward);
+      stream.next(m.init_joint);
+      stream.next(m.init_position);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -215,8 +237,14 @@ struct Printer< ::simulation_ur3::Tracker_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.left);
     s << indent << "right: ";
     Printer<double>::stream(s, indent + "  ", v.right);
-    s << indent << "init: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.init);
+    s << indent << "forward: ";
+    Printer<double>::stream(s, indent + "  ", v.forward);
+    s << indent << "backward: ";
+    Printer<double>::stream(s, indent + "  ", v.backward);
+    s << indent << "init_joint: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.init_joint);
+    s << indent << "init_position: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.init_position);
   }
 };
 

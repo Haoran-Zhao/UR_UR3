@@ -14,7 +14,7 @@
 
 (defclass simulation_ur3::Tracker
   :super ros::object
-  :slots (_up _down _left _right _init ))
+  :slots (_up _down _left _right _forward _backward _init_joint _init_position ))
 
 (defmethod simulation_ur3::Tracker
   (:init
@@ -23,14 +23,20 @@
     ((:down __down) 0.0)
     ((:left __left) 0.0)
     ((:right __right) 0.0)
-    ((:init __init) nil)
+    ((:forward __forward) 0.0)
+    ((:backward __backward) 0.0)
+    ((:init_joint __init_joint) nil)
+    ((:init_position __init_position) nil)
     )
    (send-super :init)
    (setq _up (float __up))
    (setq _down (float __down))
    (setq _left (float __left))
    (setq _right (float __right))
-   (setq _init __init)
+   (setq _forward (float __forward))
+   (setq _backward (float __backward))
+   (setq _init_joint __init_joint)
+   (setq _init_position __init_position)
    self)
   (:up
    (&optional __up)
@@ -44,9 +50,18 @@
   (:right
    (&optional __right)
    (if __right (setq _right __right)) _right)
-  (:init
-   (&optional __init)
-   (if __init (setq _init __init)) _init)
+  (:forward
+   (&optional __forward)
+   (if __forward (setq _forward __forward)) _forward)
+  (:backward
+   (&optional __backward)
+   (if __backward (setq _backward __backward)) _backward)
+  (:init_joint
+   (&optional __init_joint)
+   (if __init_joint (setq _init_joint __init_joint)) _init_joint)
+  (:init_position
+   (&optional __init_position)
+   (if __init_position (setq _init_position __init_position)) _init_position)
   (:serialization-length
    ()
    (+
@@ -58,7 +73,13 @@
     8
     ;; float64 _right
     8
-    ;; bool _init
+    ;; float64 _forward
+    8
+    ;; float64 _backward
+    8
+    ;; bool _init_joint
+    1
+    ;; bool _init_position
     1
     ))
   (:serialize
@@ -73,8 +94,14 @@
        (sys::poke _left (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _right
        (sys::poke _right (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; bool _init
-       (if _init (write-byte -1 s) (write-byte 0 s))
+     ;; float64 _forward
+       (sys::poke _forward (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _backward
+       (sys::poke _backward (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; bool _init_joint
+       (if _init_joint (write-byte -1 s) (write-byte 0 s))
+     ;; bool _init_position
+       (if _init_position (write-byte -1 s) (write-byte 0 s))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -87,28 +114,38 @@
      (setq _left (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _right
      (setq _right (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; bool _init
-     (setq _init (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
+   ;; float64 _forward
+     (setq _forward (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _backward
+     (setq _backward (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; bool _init_joint
+     (setq _init_joint (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
+   ;; bool _init_position
+     (setq _init_position (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;;
    self)
   )
 
-(setf (get simulation_ur3::Tracker :md5sum-) "4403fe424018d01642c7d5f64d2fbe63")
+(setf (get simulation_ur3::Tracker :md5sum-) "8c54a711bf68e69302a10bb7bfb7ca79")
 (setf (get simulation_ur3::Tracker :datatype-) "simulation_ur3/Tracker")
 (setf (get simulation_ur3::Tracker :definition-)
       "# message type to describe the tracking information of the blocks
 # to be published as a topic
 
-float64 up  # move up
-float64 down  # move down
-float64 left  # move left
-float64 right  # move down
-bool init #initialize pose
+float64 up  # move up z+
+float64 down  # move down z-
+float64 left  # move left y+
+float64 right  # move down y-
+float64 forward  # move forward x+
+float64 backward  # move backward x-
+
+bool init_joint #initialize joint
+bool init_position #initialize position
 
 ")
 
 
 
-(provide :simulation_ur3/Tracker "4403fe424018d01642c7d5f64d2fbe63")
+(provide :simulation_ur3/Tracker "8c54a711bf68e69302a10bb7bfb7ca79")
 
 

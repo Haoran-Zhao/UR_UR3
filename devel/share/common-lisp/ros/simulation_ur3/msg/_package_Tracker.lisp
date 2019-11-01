@@ -7,6 +7,12 @@
           LEFT
           RIGHT-VAL
           RIGHT
-          INIT-VAL
-          INIT
+          FORWARD-VAL
+          FORWARD
+          BACKWARD-VAL
+          BACKWARD
+          INIT_JOINT-VAL
+          INIT_JOINT
+          INIT_POSITION-VAL
+          INIT_POSITION
 ))

@@ -22,7 +22,10 @@ class Tracker {
       this.down = null;
       this.left = null;
       this.right = null;
-      this.init = null;
+      this.forward = null;
+      this.backward = null;
+      this.init_joint = null;
+      this.init_position = null;
     }
     else {
       if (initObj.hasOwnProperty('up')) {
@@ -49,11 +52,29 @@ class Tracker {
       else {
         this.right = 0.0;
       }
-      if (initObj.hasOwnProperty('init')) {
-        this.init = initObj.init
+      if (initObj.hasOwnProperty('forward')) {
+        this.forward = initObj.forward
       }
       else {
-        this.init = false;
+        this.forward = 0.0;
+      }
+      if (initObj.hasOwnProperty('backward')) {
+        this.backward = initObj.backward
+      }
+      else {
+        this.backward = 0.0;
+      }
+      if (initObj.hasOwnProperty('init_joint')) {
+        this.init_joint = initObj.init_joint
+      }
+      else {
+        this.init_joint = false;
+      }
+      if (initObj.hasOwnProperty('init_position')) {
+        this.init_position = initObj.init_position
+      }
+      else {
+        this.init_position = false;
       }
     }
   }
@@ -68,8 +89,14 @@ class Tracker {
     bufferOffset = _serializer.float64(obj.left, buffer, bufferOffset);
     // Serialize message field [right]
     bufferOffset = _serializer.float64(obj.right, buffer, bufferOffset);
-    // Serialize message field [init]
-    bufferOffset = _serializer.bool(obj.init, buffer, bufferOffset);
+    // Serialize message field [forward]
+    bufferOffset = _serializer.float64(obj.forward, buffer, bufferOffset);
+    // Serialize message field [backward]
+    bufferOffset = _serializer.float64(obj.backward, buffer, bufferOffset);
+    // Serialize message field [init_joint]
+    bufferOffset = _serializer.bool(obj.init_joint, buffer, bufferOffset);
+    // Serialize message field [init_position]
+    bufferOffset = _serializer.bool(obj.init_position, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -85,13 +112,19 @@ class Tracker {
     data.left = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [right]
     data.right = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [init]
-    data.init = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [forward]
+    data.forward = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [backward]
+    data.backward = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [init_joint]
+    data.init_joint = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [init_position]
+    data.init_position = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 33;
+    return 50;
   }
 
   static datatype() {
@@ -101,7 +134,7 @@ class Tracker {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '4403fe424018d01642c7d5f64d2fbe63';
+    return '8c54a711bf68e69302a10bb7bfb7ca79';
   }
 
   static messageDefinition() {
@@ -110,11 +143,15 @@ class Tracker {
     # message type to describe the tracking information of the blocks
     # to be published as a topic
     
-    float64 up  # move up
-    float64 down  # move down
-    float64 left  # move left
-    float64 right  # move down
-    bool init #initialize pose
+    float64 up  # move up z+
+    float64 down  # move down z-
+    float64 left  # move left y+
+    float64 right  # move down y-
+    float64 forward  # move forward x+
+    float64 backward  # move backward x-
+    
+    bool init_joint #initialize joint
+    bool init_position #initialize position
     
     `;
   }
@@ -153,11 +190,32 @@ class Tracker {
       resolved.right = 0.0
     }
 
-    if (msg.init !== undefined) {
-      resolved.init = msg.init;
+    if (msg.forward !== undefined) {
+      resolved.forward = msg.forward;
     }
     else {
-      resolved.init = false
+      resolved.forward = 0.0
+    }
+
+    if (msg.backward !== undefined) {
+      resolved.backward = msg.backward;
+    }
+    else {
+      resolved.backward = 0.0
+    }
+
+    if (msg.init_joint !== undefined) {
+      resolved.init_joint = msg.init_joint;
+    }
+    else {
+      resolved.init_joint = false
+    }
+
+    if (msg.init_position !== undefined) {
+      resolved.init_position = msg.init_position;
+    }
+    else {
+      resolved.init_position = false
     }
 
     return resolved;

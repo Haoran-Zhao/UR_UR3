@@ -7,20 +7,24 @@ import struct
 
 
 class Tracker(genpy.Message):
-  _md5sum = "4403fe424018d01642c7d5f64d2fbe63"
+  _md5sum = "8c54a711bf68e69302a10bb7bfb7ca79"
   _type = "simulation_ur3/Tracker"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """# message type to describe the tracking information of the blocks
 # to be published as a topic
 
-float64 up  # move up
-float64 down  # move down
-float64 left  # move left
-float64 right  # move down
-bool init #initialize pose
+float64 up  # move up z+
+float64 down  # move down z-
+float64 left  # move left y+
+float64 right  # move down y-
+float64 forward  # move forward x+
+float64 backward  # move backward x-
+
+bool init_joint #initialize joint
+bool init_position #initialize position
 """
-  __slots__ = ['up','down','left','right','init']
-  _slot_types = ['float64','float64','float64','float64','bool']
+  __slots__ = ['up','down','left','right','forward','backward','init_joint','init_position']
+  _slot_types = ['float64','float64','float64','float64','float64','float64','bool','bool']
 
   def __init__(self, *args, **kwds):
     """
@@ -30,7 +34,7 @@ bool init #initialize pose
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       up,down,left,right,init
+       up,down,left,right,forward,backward,init_joint,init_position
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -47,14 +51,23 @@ bool init #initialize pose
         self.left = 0.
       if self.right is None:
         self.right = 0.
-      if self.init is None:
-        self.init = False
+      if self.forward is None:
+        self.forward = 0.
+      if self.backward is None:
+        self.backward = 0.
+      if self.init_joint is None:
+        self.init_joint = False
+      if self.init_position is None:
+        self.init_position = False
     else:
       self.up = 0.
       self.down = 0.
       self.left = 0.
       self.right = 0.
-      self.init = False
+      self.forward = 0.
+      self.backward = 0.
+      self.init_joint = False
+      self.init_position = False
 
   def _get_types(self):
     """
@@ -69,7 +82,7 @@ bool init #initialize pose
     """
     try:
       _x = self
-      buff.write(_get_struct_4dB().pack(_x.up, _x.down, _x.left, _x.right, _x.init))
+      buff.write(_get_struct_6d2B().pack(_x.up, _x.down, _x.left, _x.right, _x.forward, _x.backward, _x.init_joint, _x.init_position))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -82,9 +95,10 @@ bool init #initialize pose
       end = 0
       _x = self
       start = end
-      end += 33
-      (_x.up, _x.down, _x.left, _x.right, _x.init,) = _get_struct_4dB().unpack(str[start:end])
-      self.init = bool(self.init)
+      end += 50
+      (_x.up, _x.down, _x.left, _x.right, _x.forward, _x.backward, _x.init_joint, _x.init_position,) = _get_struct_6d2B().unpack(str[start:end])
+      self.init_joint = bool(self.init_joint)
+      self.init_position = bool(self.init_position)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -98,7 +112,7 @@ bool init #initialize pose
     """
     try:
       _x = self
-      buff.write(_get_struct_4dB().pack(_x.up, _x.down, _x.left, _x.right, _x.init))
+      buff.write(_get_struct_6d2B().pack(_x.up, _x.down, _x.left, _x.right, _x.forward, _x.backward, _x.init_joint, _x.init_position))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -112,9 +126,10 @@ bool init #initialize pose
       end = 0
       _x = self
       start = end
-      end += 33
-      (_x.up, _x.down, _x.left, _x.right, _x.init,) = _get_struct_4dB().unpack(str[start:end])
-      self.init = bool(self.init)
+      end += 50
+      (_x.up, _x.down, _x.left, _x.right, _x.forward, _x.backward, _x.init_joint, _x.init_position,) = _get_struct_6d2B().unpack(str[start:end])
+      self.init_joint = bool(self.init_joint)
+      self.init_position = bool(self.init_position)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -123,9 +138,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_4dB = None
-def _get_struct_4dB():
-    global _struct_4dB
-    if _struct_4dB is None:
-        _struct_4dB = struct.Struct("<4dB")
-    return _struct_4dB
+_struct_6d2B = None
+def _get_struct_6d2B():
+    global _struct_6d2B
+    if _struct_6d2B is None:
+        _struct_6d2B = struct.Struct("<6d2B")
+    return _struct_6d2B

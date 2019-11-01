@@ -39,7 +39,7 @@ tracker = Tracker()
 
 class ur3_teleop:
     def __init__(self):
-        rospy.init_node('ur3_teleop', anonymous = False)
+        rospy.init_node('ur3_teleop', anonymous = True)
         rospy.loginfo("Starting node ur3_teleop")
         self.tele_sub = rospy.Subscriber('input_key', Tracker, self.call_back, queue_size=1)
         rospy.on_shutdown(self.cleanup)
@@ -56,7 +56,7 @@ class ur3_teleop:
         # Set the reference frame for pose targets
         reference_frame = "/base_link"
 
-        # Set the ur5_arm reference frame accordingly
+        # Set the ur3_arm reference frame accordingly
         self.arm.set_pose_reference_frame(reference_frame)
 
         # Allow replanning to increase the odds of a solution
@@ -69,43 +69,43 @@ class ur3_teleop:
         self.arm.set_max_acceleration_scaling_factor(.5)
         self.arm.set_max_velocity_scaling_factor(.5)
 
-        # Specify default (idle) joint states
-        self.default_joint_states = self.arm.get_current_joint_values()
-        self.default_joint_states[0] = 0  # shoulder_pan_joint
-        self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
-        self.default_joint_states[2] = 1.8615147    # elbow_joint
-        self.default_joint_states[3] = -3.87846    # wrist_1_joint
-        self.default_joint_states[4] = -1.570656     # wrist_2_joint
-        self.default_joint_states[5] = 0           # wrist_3s_joint
-
-        self.arm.set_joint_value_target(self.default_joint_states)
-
-        # Set the internal state to the current state
-        #initialize the arm joint poses
-        self.arm.set_start_state_to_current_state()
-        plan = self.arm.plan()
-        self.arm.execute(plan)
-
-        # Get the current pose so we can add it as a waypoint
-        start_pose = self.arm.get_current_pose(self.end_effector_link).pose
-        # Initialize the waypoints list
-        print(start_pose)
-        self.waypoints = []
-        # Set the first waypoint to be the starting pose
-        # Append the pose to the waypoints list
-        wpose = deepcopy(start_pose)
-
-        wpose.position.x = 0.35118
-        wpose.position.y = 0.11240
-        wpose.position.z = 0.2997
-
-        self.waypoints.append(deepcopy(wpose))
-
-        if np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.x-start_pose.position.x)**2 \
-            +(wpose.position.x-start_pose.position.x)**2)<0.1:
-            rospy.loginfo("Warnig: target position overlaps with the initial position!")
-        else:
-            self.cartesian_execut(self.waypoints)
+        # # Specify default (idle) joint states
+        # self.default_joint_states = self.arm.get_current_joint_values()
+        # self.default_joint_states[0] = 0  # shoulder_pan_joint
+        # self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
+        # self.default_joint_states[2] = 1.8615147    # elbow_joint
+        # self.default_joint_states[3] = -3.87846    # wrist_1_joint
+        # self.default_joint_states[4] = -1.570656     # wrist_2_joint
+        # self.default_joint_states[5] = 0           # wrist_3s_joint
+        #
+        # self.arm.set_joint_value_target(self.default_joint_states)
+        #
+        # # Set the internal state to the current state
+        # #initialize the arm joint poses
+        # self.arm.set_start_state_to_current_state()
+        # plan = self.arm.plan()
+        # self.arm.execute(plan)
+        #
+        # # Get the current pose so we can add it as a waypoint
+        # start_pose = self.arm.get_current_pose(self.end_effector_link).pose
+        # # Initialize the waypoints list
+        # print(start_pose)
+        # self.waypoints = []
+        # # Set the first waypoint to be the starting pose
+        # # Append the pose to the waypoints list
+        # wpose = deepcopy(start_pose)
+        #
+        # wpose.position.x = 0.35118
+        # wpose.position.y = 0.11240
+        # wpose.position.z = 0.2997
+        #
+        # self.waypoints.append(deepcopy(wpose))
+        #
+        # if np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.x-start_pose.position.x)**2 \
+        #     +(wpose.position.x-start_pose.position.x)**2)<0.1:
+        #     rospy.loginfo("Warnig: target position overlaps with the initial position!")
+        # else:
+        #     self.cartesian_execut(self.waypoints)
 
     def cartesian_execut(self, waypoints):
         plan, fraction = self.arm.compute_cartesian_path(waypoints, 0.01, 0.0, True)
@@ -132,10 +132,13 @@ class ur3_teleop:
 
     def call_back(self, msg):
         self.up = msg.up
-        self.down = msg.on_shutdown
+        self.down = msg.down
         self.left = msg.left
         self.right = msg.right
-        self.init = msg.init
+        self.forward = msg.forward
+        self.backward = msg.backward
+        self.init_position = msg.init_position
+        self.init_joint = msg.init_joint
 
         self.execute()
 
@@ -143,33 +146,75 @@ class ur3_teleop:
         self.down = 0
         self.left = 0
         self.right = 0
-        self.init = False
-
+        self.forward = 0
+        self.backward = 0
+        self.init_position = False
+        self.init_joint = False
     def execute(self):
-        if self.init:
+
+        if self.init_joint:
+            self.default_joint_states = self.arm.get_current_joint_values()
+            # self.default_joint_states[0] = -1.57691
+            # self.default_joint_states[1] = -1.71667
+            # self.default_joint_states[2] = 1.79266
+            # self.default_joint_states[3] = -1.67721
+            # self.default_joint_states[4] = -1.5705
+            # self.default_joint_states[5] = 0.0
+            self.default_joint_states[0] = 0  # shoulder_pan_joint
+            self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
+            self.default_joint_states[2] = 1.8615147    # elbow_joint
+            self.default_joint_states[3] = -3.87846    # wrist_1_joint
+            self.default_joint_states[4] = -1.570656     # wrist_2_joint
+            self.default_joint_states[5] = 0           # wrist_3s_joint
+
             self.arm.set_joint_value_target(self.default_joint_states)
+
             # Set the internal state to the current state
-            #initialize the arm joint poses
+            #move to target joint_states
             self.arm.set_start_state_to_current_state()
             plan = self.arm.plan()
             self.arm.execute(plan)
-        else:
-            # Get the current pose so we can add it as a waypoint
+        elif self.init_position:
             start_pose = self.arm.get_current_pose(self.end_effector_link).pose
             # Initialize the waypoints list
-            self.waypoints= []
+            self.waypoints = []
             # Set the first waypoint to be the starting pose
             # Append the pose to the waypoints list
             wpose = deepcopy(start_pose)
 
-            wpose.position.z += (self.up+self.down)
+            wpose.position.x = 0.35118
+            wpose.position.y = 0.11260
+            wpose.position.z = 0.2993
+
+            self.waypoints.append(deepcopy(wpose))
+            position_offset = np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.y-start_pose.position.y)**2 \
+                +(wpose.position.z-start_pose.position.z)**2)
+            rospy.loginfo(position_offset)
+            if position_offset<0.01:
+                rospy.loginfo("Warnig: target position overlaps with the initial position!")
+            else:
+                self.cartesian_execut(self.waypoints)
+        else:
+            # Initialize the waypoints list
+            self.waypoints= []
+            # Get the current pose so we can add it as a waypoint
+            start_pose = self.arm.get_current_pose(self.end_effector_link).pose
+            wpose = deepcopy(start_pose)
+            # Set the first waypoint to be the starting pose
+            # Append the pose to the waypoints list
+            wpose.position.x += (self.forward+self.backward)
             wpose.position.y += (self.left+self.right)
+            wpose.position.z += (self.up+self.down)
 
             self.waypoints.append(deepcopy(wpose))
 
             self.arm.set_start_state_to_current_state()
-            if np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.x-start_pose.position.x)**2 \
-                +(wpose.position.x-start_pose.position.x)**2)<0.1:
+
+            position_offset = np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.y-start_pose.position.y)**2 \
+                +(wpose.position.z-start_pose.position.z)**2)
+            rospy.loginfo(position_offset)
+
+            if position_offset<0.01:
                 rospy.loginfo("Warnig: target position overlaps with the initial position!")
             else:
                 self.cartesian_execut(self.waypoints)
