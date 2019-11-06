@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: ur3_hardware
+Description: Description of ur3_hardware
+Version: 0.0.0
+Cflags: -I/home/haoran/US_UR3/devel/include
+Libs: -L/home/haoran/US_UR3/devel/lib 
+Requires: message_runtime

@@ -295,6 +295,18 @@ chomp_motion_planner_DIR:PATH=/opt/ros/kinetic/share/chomp_motion_planner/cmake
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/kinetic/share/class_loader/cmake
 
+//The directory containing a CMake configuration file for control_msgs.
+control_msgs_DIR:PATH=/opt/ros/kinetic/share/control_msgs/cmake
+
+//The directory containing a CMake configuration file for controller_interface.
+controller_interface_DIR:PATH=/opt/ros/kinetic/share/controller_interface/cmake
+
+//The directory containing a CMake configuration file for controller_manager.
+controller_manager_DIR:PATH=/opt/ros/kinetic/share/controller_manager/cmake
+
+//The directory containing a CMake configuration file for controller_manager_msgs.
+controller_manager_msgs_DIR:PATH=/opt/ros/kinetic/share/controller_manager_msgs/cmake
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
@@ -374,8 +386,14 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//The directory containing a CMake configuration file for hardware_interface.
+hardware_interface_DIR:PATH=/opt/ros/kinetic/share/hardware_interface/cmake
+
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/kinetic/share/image_transport/cmake
+
+//The directory containing a CMake configuration file for industrial_msgs.
+industrial_msgs_DIR:PATH=industrial_msgs_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for kdl_conversions.
 kdl_conversions_DIR:PATH=/opt/ros/kinetic/share/kdl_conversions/cmake
@@ -542,6 +560,12 @@ ur3_e_moveit_config_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/universal_robot/
 //Value Computed by CMake
 ur3_e_moveit_config_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/universal_robot/ur3_e_moveit_config
 
+//Value Computed by CMake
+ur3_hardware_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ur3_hardware
+
+//Value Computed by CMake
+ur3_hardware_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ur3_hardware
+
 //Dependencies for target
 ur3_kin_LIB_DEPENDS:STATIC=
 
@@ -613,6 +637,12 @@ ur_kinematics_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/universal_robot/ur_kin
 
 //Value Computed by CMake
 ur_kinematics_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/universal_robot/ur_kinematics
+
+//Value Computed by CMake
+ur_modern_driver_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ur_modern_driver
+
+//Value Computed by CMake
+ur_modern_driver_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ur_modern_driver
 
 //Value Computed by CMake
 ur_msgs_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/universal_robot/ur_msgs
@@ -746,7 +776,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=20
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=21
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

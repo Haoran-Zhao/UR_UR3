@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find ur_modern_driver)/launch/ur3_bringup.launch">
+    <arg name="robot_ip" default="192.168.0.102"/>
+    <arg name="limited" default="True"/>
+  </include>
+  <!-- Launch moveit -->
+  <include file="$(find ur3_moveit_config)/launch/ur3_moveit_planning_execution.launch">
+    <arg name="limited" default="True"/>
+    <arg name="debug" default="False" />
+  </include>
+
+  <arg name="config" default="true" />
+  <arg unless="$(arg config)" name="command_args" value="" />
+  <arg     if="$(arg config)" name="command_args" value="-d $(find ur3_moveit_config)/launch/moveit.rviz" />
+
+
+  <node name="keys_to_tracker" pkg="simulation_ur3" type="keys_to_tracker.py" output="screen" />
+  <node name="ur3_teleop" pkg="simulation_ur3" type="ur3_teleop.py" output="screen" />
+
+  <!-- publisher node -->
+
+</launch>
