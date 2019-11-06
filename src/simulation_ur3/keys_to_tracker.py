@@ -26,7 +26,8 @@ w/x : increase/decrease along z-axis
 CTRL-C to quit
 """
 
-step = 0.02
+step = 0.002
+status = 0
 key_mapping = {'w':(step,0,0,0,0,0), 'x':(0,-step,0,0,0,0), 'a':(0,0,step,0,0,0),
     'd':(0,0,0,-step,0,0), 's':(0,0,0,0,0,0), 'p':(0,0,0,0,step,0), 'l':(0,0,0,0,0,-step)}
 key_states = {'i':(True,False), 'j':(False, True)}
@@ -48,6 +49,9 @@ if __name__=="__main__":
         print(msg)
         while(1):
             key = getKey()
+            if (status == 14):
+                print(msg)
+            status = (status + 1) % 15
             if key in key_mapping.keys():
                 up = key_mapping[key][0]
                 down = key_mapping[key][1]
