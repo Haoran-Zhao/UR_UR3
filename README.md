@@ -17,6 +17,14 @@ To connect your PC and an UR3, run the following launch file, (you need to `sour
 or run the launch file [`ur3_hardware/launch/rviz_config.launch`](https://github.com/Haoran-Zhao/US_UR3/blob/master/src/ur3_hardware/launch/rviz_config.launch)
 You may need to change your joint limit file before you run any motion planning program on the hardware. ([`Example`](https://github.com/lihuang3/ur3_ROS-hardware/issues/1#issuecomment-422070509))
 
+Get the joint states:
+```
+rostopic echo /joint_states
+```
+Get end effector position"
+```
+rosrun tf tf_echo /base_link /ee_link
+```
 
 #### 2. Image Processing
 
