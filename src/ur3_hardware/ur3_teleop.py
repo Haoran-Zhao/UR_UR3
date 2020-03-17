@@ -66,8 +66,8 @@ class ur3_teleop:
         self.arm.set_goal_position_tolerance(0.01)
         self.arm.set_goal_orientation_tolerance(0.1)
         self.arm.set_planning_time(0.1)
-        self.arm.set_max_acceleration_scaling_factor(.5)
-        self.arm.set_max_velocity_scaling_factor(.5)
+        self.arm.set_max_acceleration_scaling_factor(.3)
+        self.arm.set_max_velocity_scaling_factor(.3)
 
         # # Specify default (idle) joint states
         # self.default_joint_states = self.arm.get_current_joint_values()
@@ -161,11 +161,11 @@ class ur3_teleop:
             # self.default_joint_states[4] = -1.5705
             # self.default_joint_states[5] = 0.0
             self.default_joint_states[0] = 0  # shoulder_pan_joint
-            self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
-            self.default_joint_states[2] = 1.8615147    # elbow_joint
-            self.default_joint_states[3] = -3.87846    # wrist_1_joint
-            self.default_joint_states[4] = -1.570656     # wrist_2_joint
-            self.default_joint_states[5] = 0           # wrist_3s_joint
+            self.default_joint_states[1] = -1.0996  # shoulder_lift_joint
+            self.default_joint_states[2] = 1.9199    # elbow_joint
+            self.default_joint_states[3] = -0.7858    # wrist_1_joint
+            self.default_joint_states[4] = 1.57079     # wrist_2_joint
+            self.default_joint_states[5] = 1.7639         # wrist_3s_joint
 
             self.arm.set_joint_value_target(self.default_joint_states)
 
@@ -184,9 +184,9 @@ class ur3_teleop:
             # Append the pose to the waypoints list
             wpose = deepcopy(start_pose)
 
-            wpose.position.x = 0.35118
-            wpose.position.y = 0.11260
-            wpose.position.z = 0.2993
+            wpose.position.x = 0.335
+            wpose.position.y = 0.112
+            wpose.position.z = 0.125
 
             # print(wpose)
             self.waypoints.append(deepcopy(wpose))

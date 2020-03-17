@@ -15,8 +15,8 @@
   <arg     if="$(arg config)" name="command_args" value="-d $(find ur3_moveit_config)/launch/moveit.rviz" />
 
 
-  <node name="keys_to_tracker" pkg="simulation_ur3" type="keys_to_tracker.py" output="screen" />
-  <node name="ur3_teleop" pkg="simulation_ur3" type="ur3_teleop.py" output="screen" />
+  <node name="keys_to_tracker" pkg="ur3_hardware" type="keys_to_tracker.py" output="screen" />
+  <node name="ur3_teleop" pkg="ur3_hardware" type="ur3_teleop.py" output="screen" />
 
   <!-- publisher node -->
 
