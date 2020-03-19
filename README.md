@@ -25,11 +25,17 @@ Get end effector position"
 ```
 rosrun tf tf_echo /base_link /ee_link
 ```
+#### 2. Network setup of Windows and Linux
+Follow the instruction [`ROS/NetworkSetup`](http://wiki.ros.org/ROS/NetworkSetup)
+##### 2.1 Linux troubleshooting
+ssh Linux failed: port 22: Connection refused [`solution: reinstall shh`](https://stackoverflow.com/questions/17335728/connect-to-host-localhost-port-22-connection-refused)
+##### 2.2 Windows troubleshooting
+set ethernet as private, which is discoverable [`solution`](https://superuser.com/questions/627208/unable-to-ping-a-windows-machine-from-linux/1203485).
+Allow ping through the firewall ICMPv4 (both private and domine) [`solution`](https://www.faqforge.com/windows/windows-10/how-to-allow-ping-trough-the-firewall-in-windows-10/)
+#### 3. Image Processing
 
-#### 2. Image Processing
-
-#### 3. ROS-Arduino
-##### 3.1
+#### 4. ROS-Arduino
+##### 4.1
 [`official tutorial`](http://wiki.ros.org/rosserial_arduino/Tutorials)
 [`Generating Message Header File`](http://wiki.ros.org/rosserial_client/Tutorials/Generating%20Message%20Header%20Files)
 
@@ -51,4 +57,4 @@ cd <your workspace>
 source devel/setup.bash
 rosrun rosserial_python serial_node.py /dev/ttyACM1
 ```
-#### 4. In Arduino IDE open serial monitor
+##### 4.2 In Arduino IDE open serial monitor
