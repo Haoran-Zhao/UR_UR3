@@ -173,7 +173,7 @@ struct Definition< ::simulation_ur3::Tracker_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "# message type to describe the tracking information of the blocks\n\
+    return "# message type to describe the input of keyboard\n\
 # to be published as a topic\n\
 \n\
 float64 up  # move up z+\n\

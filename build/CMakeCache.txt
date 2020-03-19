@@ -238,6 +238,12 @@ LSB_FOUND:BOOL=TRUE
 //Path to a program.
 LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 
+//Value Computed by CMake
+Matlab_gazebo_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/Matlab_gazebo
+
+//Value Computed by CMake
+Matlab_gazebo_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/Matlab_gazebo
+
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
@@ -403,6 +409,12 @@ kdl_parser_DIR:PATH=/opt/ros/kinetic/share/kdl_parser/cmake
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libtf2.so
+
+//Value Computed by CMake
+matlab_gazebo_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/matlab_gazebo
+
+//Value Computed by CMake
+matlab_gazebo_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/matlab_gazebo
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/kinetic/share/message_filters/cmake
@@ -782,7 +794,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=22
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=23
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

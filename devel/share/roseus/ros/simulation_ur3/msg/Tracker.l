@@ -129,7 +129,7 @@
 (setf (get simulation_ur3::Tracker :md5sum-) "8c54a711bf68e69302a10bb7bfb7ca79")
 (setf (get simulation_ur3::Tracker :datatype-) "simulation_ur3/Tracker")
 (setf (get simulation_ur3::Tracker :definition-)
-      "# message type to describe the tracking information of the blocks
+      "# message type to describe the input of keyboard
 # to be published as a topic
 
 float64 up  # move up z+

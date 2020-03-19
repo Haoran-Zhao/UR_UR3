@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="paused" default="true" doc="Starts gazebo in paused mode" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="sim" default="true" />
+  <arg name="debug" default="false" />
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- spwan ur3 -->
+  <!-- send robot urdf to param server -->
+  <include file="$(find ur_description)/launch/ur3_upload.launch">
+    <arg name="limited" value="$(arg limited)"/>
+  </include>
+
+
+  <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
+
+  <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur3.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager"
+     args="spawn arm_controller" respawn="false" output="screen"/>
+
+
+
+  <!-- Remap follow_joint_trajectory -->
+  <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>
+
+  <!-- Launch moveit -->
+  <include file="$(find ur3_moveit_config)/launch/move_group.launch">
+    <arg name="limited" default="$(arg limited)"/>
+    <arg name="debug" default="$(arg debug)" />
+  </include>
+
+  <!-- Launch moveit_rviz -->
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <arg name="config" default="true" />
+  <arg unless="$(arg config)" name="command_args" value="" />
+  <arg     if="$(arg config)" name="command_args" value="-d $(find ur3_moveit_config)/launch/moveit.rviz" />
+
+  <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
+	args="$(arg command_args)" output="screen">
+    <rosparam command="load" file="$(find ur3_moveit_config)/config/kinematics.yaml"/>
+  </node>
+
+  <!-- spawn in gazebo -->
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="UR3" pkg="gazebo_ros" type="spawn_model" args="-urdf -unpause
+    -param robot_description -model robot
+    -z 0.9 -y -0.127 -x -1.15
+    -J robot::shoulder_pan_joint 0 -J robot::shoulder_lift_joint -1.0844 -J robot::elbow_joint 1.8615147
+    -J robot::wrist_1_joint -3.87846 -J robot::wrist_2_joint -1.570656 -J robot::wrist_3_joint 0" respawn="false" output="screen" />
+
+  <!-- spawn the conveyor_belt in gazebo -->
+  <node name="table" pkg="gazebo_ros" type="spawn_model" args="-file $(find matlab_gazebo)/urdf/table.sdf -sdf -model table" />
+  <node name="bin" pkg="gazebo_ros" type="spawn_model" args="-file $(find matlab_gazebo)/urdf/bin.urdf -urdf -model bin -z 1.15 -x -0.55" />
+
+  <node name="keys_to_tracker" pkg="matlab_gazebo" type="keys_to_tracker.py" output="screen" />
+  <node name="ur3_teleop" pkg="matlab_gazebo" type="ur3_teleop.py" output="screen" />
+
+  <!-- publisher node -->
+
+</launch>

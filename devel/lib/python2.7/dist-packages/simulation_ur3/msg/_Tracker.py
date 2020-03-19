@@ -10,7 +10,7 @@ class Tracker(genpy.Message):
   _md5sum = "8c54a711bf68e69302a10bb7bfb7ca79"
   _type = "simulation_ur3/Tracker"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """# message type to describe the tracking information of the blocks
+  _full_text = """# message type to describe the input of keyboard
 # to be published as a topic
 
 float64 up  # move up z+

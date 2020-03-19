@@ -66,46 +66,9 @@ class ur3_teleop:
         self.arm.set_goal_position_tolerance(0.01)
         self.arm.set_goal_orientation_tolerance(0.1)
         self.arm.set_planning_time(0.1)
-        self.arm.set_max_acceleration_scaling_factor(.3)
+        self.arm.set_max_acceleration_scaling_factor(.1)
         self.arm.set_max_velocity_scaling_factor(.3)
 
-        # # Specify default (idle) joint states
-        # self.default_joint_states = self.arm.get_current_joint_values()
-        # self.default_joint_states[0] = 0  # shoulder_pan_joint
-        # self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
-        # self.default_joint_states[2] = 1.8615147    # elbow_joint
-        # self.default_joint_states[3] = -3.87846    # wrist_1_joint
-        # self.default_joint_states[4] = -1.570656     # wrist_2_joint
-        # self.default_joint_states[5] = 0           # wrist_3s_joint
-        #
-        # self.arm.set_joint_value_target(self.default_joint_states)
-        #
-        # # Set the internal state to the current state
-        # #initialize the arm joint poses
-        # self.arm.set_start_state_to_current_state()
-        # plan = self.arm.plan()
-        # self.arm.execute(plan)
-        #
-        # # Get the current pose so we can add it as a waypoint
-        # start_pose = self.arm.get_current_pose(self.end_effector_link).pose
-        # # Initialize the waypoints list
-        # print(start_pose)
-        # self.waypoints = []
-        # # Set the first waypoint to be the starting pose
-        # # Append the pose to the waypoints list
-        # wpose = deepcopy(start_pose)
-        #
-        # wpose.position.x = 0.35118
-        # wpose.position.y = 0.11240
-        # wpose.position.z = 0.2997
-        #
-        # self.waypoints.append(deepcopy(wpose))
-        #
-        # if np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.x-start_pose.position.x)**2 \
-        #     +(wpose.position.x-start_pose.position.x)**2)<0.1:
-        #     rospy.loginfo("Warnig: target position overlaps with the initial position!")
-        # else:
-        #     self.cartesian_execut(self.waypoints)
 
     def cartesian_execut(self, waypoints):
         plan, fraction = self.arm.compute_cartesian_path(waypoints, 0.01, 0.0, True)
@@ -150,8 +113,8 @@ class ur3_teleop:
         self.backward = 0
         self.init_position = False
         self.init_joint = False
-    def execute(self):
 
+    def execute(self):
         if self.init_joint:
             self.default_joint_states = self.arm.get_current_joint_values()
             # self.default_joint_states[0] = -1.57691
@@ -174,6 +137,7 @@ class ur3_teleop:
             self.arm.set_start_state_to_current_state()
             plan = self.arm.plan()
             self.arm.execute(plan)
+
         elif self.init_position:
             start_pose = self.arm.get_current_pose(self.end_effector_link).pose
 

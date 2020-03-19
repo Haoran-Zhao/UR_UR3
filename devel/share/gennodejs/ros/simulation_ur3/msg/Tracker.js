@@ -140,7 +140,7 @@ class Tracker {
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    # message type to describe the tracking information of the blocks
+    # message type to describe the input of keyboard
     # to be published as a topic
     
     float64 up  # move up z+

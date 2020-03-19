@@ -223,7 +223,6 @@ class ur3_teleop:
             else:
                 self.cartesian_execut(self.waypoints)
 
-
 if __name__ == "__main__":
     try:
         ur3_teleop()

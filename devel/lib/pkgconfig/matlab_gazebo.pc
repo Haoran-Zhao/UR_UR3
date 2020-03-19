@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: matlab_gazebo
+Description: Description of matlab_gazebo
+Version: 0.0.0
+Cflags: -I/home/haoran/US_UR3/devel/include
+Libs: -L/home/haoran/US_UR3/devel/lib 
+Requires: message_runtime
