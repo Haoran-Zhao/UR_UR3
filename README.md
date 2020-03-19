@@ -31,7 +31,7 @@ Follow the instruction [`ROS/NetworkSetup`](http://wiki.ros.org/ROS/NetworkSetup
 ssh Linux failed: port 22: Connection refused [`solution: reinstall shh`](https://stackoverflow.com/questions/17335728/connect-to-host-localhost-port-22-connection-refused)
 ##### 2.2 Windows troubleshooting
 set ethernet as private, which is discoverable [`solution`](https://superuser.com/questions/627208/unable-to-ping-a-windows-machine-from-linux/1203485).
-Allow ping through the firewall ICMPv4 (both private and domine) [`solution`](https://www.faqforge.com/windows/windows-10/how-to-allow-ping-trough-the-firewall-in-windows-10/)
+Allow ping through the firewall ICMPv4 private (do not enable domine!!!) [`solution`](https://www.faqforge.com/windows/windows-10/how-to-allow-ping-trough-the-firewall-in-windows-10/)
 #### 3. Image Processing
 
 #### 4. ROS-Arduino
