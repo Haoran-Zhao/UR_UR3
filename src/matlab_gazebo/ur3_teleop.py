@@ -71,6 +71,13 @@ class ur3_teleop:
         self.arm.set_max_acceleration_scaling_factor(.5)
         self.arm.set_max_velocity_scaling_factor(.5)
 
+
+        cur_pose = self.arm.get_current_pose(self.end_effector_link).pose
+        self.point = Point()
+        self.point.x = cur_pose.position.x
+        self.point.y = cur_pose.position.y
+        self.point.z = cur_pose.position.z
+        self.cur_pos_pub.publish(self.point)
         # # Specify default (idle) joint states
         # self.default_joint_states = self.arm.get_current_joint_values()
         # self.default_joint_states[0] = 0  # shoulder_pan_joint
@@ -225,11 +232,10 @@ class ur3_teleop:
             else:
                 self.cartesian_execut(self.waypoints)
         cur_pose = self.arm.get_current_pose(self.end_effector_link).pose
-        point = Point()
-        point.x = cur_pose.position.x
-        point.y = cur_pose.position.y
-        point.z = cur_pose.position.z
-        self.cur_pos_pub.publish(point)
+        self.point.x = cur_pose.position.x
+        self.point.y = cur_pose.position.y
+        self.point.z = cur_pose.position.z
+        self.cur_pos_pub.publish(self.point)
 
 if __name__ == "__main__":
     try:
