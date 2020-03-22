@@ -26,7 +26,7 @@ w/x : increase/decrease along z-axis
 CTRL-C to quit
 """
 
-step = 0.001
+step = 0.002
 status = 0
 key_mapping = {'w':(step,0,0,0,0,0), 'x':(0,-step,0,0,0,0), 'a':(0,0,step,0,0,0),
     'd':(0,0,0,-step,0,0), 's':(0,0,0,0,0,0), 'p':(0,0,0,0,step,0), 'l':(0,0,0,0,0,-step)}

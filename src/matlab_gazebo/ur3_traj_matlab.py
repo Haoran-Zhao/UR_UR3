@@ -6,6 +6,7 @@ from math import pi
 import geometry_msgs.msg
 import moveit_msgs.msg
 from std_msgs.msg import Header
+from geometry_msgs.msg import Point
 from trajectory_msgs.msg import JointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from simulation_ur3.msg import Tracker
@@ -16,11 +17,13 @@ tracker = Tracker()
 
 class ur3_teleop:
     def __init__(self):
-        rospy.init_node('ur3_teleop', anonymous = True)
+        rospy.init_node('ur3_traj_matlab', anonymous = True)
         rospy.loginfo("Starting node ur3_teleop")
-        self.tele_sub = rospy.Subscriber('input_key', Tracker, self.call_back, queue_size=1)
+        self.tele_sub = rospy.Subscriber('input_key', Tracker, self.call_back_tele, queue_size=1)
+        self.cur_pos_pub = rospy.Publisher('cur_pos', Point, queue_size=1)
+        self.goal_sub = rospy.Subscriber('goal_pos', Point,self.call_back_traj, queue_size=1)
         rospy.on_shutdown(self.cleanup)
-
+        self.goal_input = 0;
         # Initialize the move_group API
         moveit_commander.roscpp_initialize(sys.argv)
 
@@ -43,9 +46,53 @@ class ur3_teleop:
         self.arm.set_goal_position_tolerance(0.01)
         self.arm.set_goal_orientation_tolerance(0.1)
         self.arm.set_planning_time(0.1)
-        self.arm.set_max_acceleration_scaling_factor(.1)
-        self.arm.set_max_velocity_scaling_factor(.3)
+        self.arm.set_max_acceleration_scaling_factor(.5)
+        self.arm.set_max_velocity_scaling_factor(.5)
 
+
+        cur_pose = self.arm.get_current_pose(self.end_effector_link).pose
+        self.point = Point()
+        self.point.x = cur_pose.position.x
+        self.point.y = cur_pose.position.y
+        self.point.z = cur_pose.position.z
+        self.cur_pos_pub.publish(self.point)
+        # # Specify default (idle) joint states
+        # self.default_joint_states = self.arm.get_current_joint_values()
+        # self.default_joint_states[0] = 0  # shoulder_pan_joint
+        # self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
+        # self.default_joint_states[2] = 1.8615147    # elbow_joint
+        # self.default_joint_states[3] = -3.87846    # wrist_1_joint
+        # self.default_joint_states[4] = -1.570656     # wrist_2_joint
+        # self.default_joint_states[5] = 0           # wrist_3s_joint
+        #
+        # self.arm.set_joint_value_target(self.default_joint_states)
+        #
+        # # Set the internal state to the current state
+        # #initialize the arm joint poses
+        # self.arm.set_start_state_to_current_state()
+        # plan = self.arm.plan()
+        # self.arm.execute(plan)
+        #
+        # # Get the current pose so we can add it as a waypoint
+        # start_pose = self.arm.get_current_pose(self.end_effector_link).pose
+        # # Initialize the waypoints list
+        # print(start_pose)
+        # self.waypoints = []
+        # # Set the first waypoint to be the starting pose
+        # # Append the pose to the waypoints list
+        # wpose = deepcopy(start_pose)
+        #
+        # wpose.position.x = 0.35118
+        # wpose.position.y = 0.11240
+        # wpose.position.z = 0.2997
+        #
+        # self.waypoints.append(deepcopy(wpose))
+        #
+        # if np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.x-start_pose.position.x)**2 \
+        #     +(wpose.position.x-start_pose.position.x)**2)<0.1:
+        #     rospy.loginfo("Warnig: target position overlaps with the initial position!")
+        # else:
+        #     self.cartesian_execut(self.waypoints)
 
     def cartesian_execut(self, waypoints):
         plan, fraction = self.arm.compute_cartesian_path(waypoints, 0.01, 0.0, True)
@@ -70,7 +117,8 @@ class ur3_teleop:
         moveit_commander.roscpp_shutdown()
         moveit_commander.os._exit(0)
 
-    def call_back(self, msg):
+    def call_back_tele(self, msg):
+        rospy.loginfo("\nRecieved key input")
         self.up = msg.up
         self.down = msg.down
         self.left = msg.left
@@ -91,7 +139,19 @@ class ur3_teleop:
         self.init_position = False
         self.init_joint = False
 
+    def call_back_traj(self, msg):
+        rospy.loginfo("\nRecieved goal input")
+        self.goal_input = 1
+        self.goal_X = msg.x
+        self.goal_Y = msg.y
+        self.goal_Z = msg.z
+
+        self.execute()
+
+        self.goal_input = 0
+
     def execute(self):
+
         if self.init_joint:
             self.default_joint_states = self.arm.get_current_joint_values()
             # self.default_joint_states[0] = -1.57691
@@ -101,11 +161,11 @@ class ur3_teleop:
             # self.default_joint_states[4] = -1.5705
             # self.default_joint_states[5] = 0.0
             self.default_joint_states[0] = 0  # shoulder_pan_joint
-            self.default_joint_states[1] = -1.0996  # shoulder_lift_joint
-            self.default_joint_states[2] = 1.9199    # elbow_joint
-            self.default_joint_states[3] = -0.7858    # wrist_1_joint
-            self.default_joint_states[4] = 1.57079     # wrist_2_joint
-            self.default_joint_states[5] = 1.7639         # wrist_3s_joint
+            self.default_joint_states[1] = -1.0844  # shoulder_lift_joint
+            self.default_joint_states[2] = 1.8615147    # elbow_joint
+            self.default_joint_states[3] = -3.87846    # wrist_1_joint
+            self.default_joint_states[4] = -1.570656     # wrist_2_joint
+            self.default_joint_states[5] = 0           # wrist_3s_joint
 
             self.arm.set_joint_value_target(self.default_joint_states)
 
@@ -114,7 +174,6 @@ class ur3_teleop:
             self.arm.set_start_state_to_current_state()
             plan = self.arm.plan()
             self.arm.execute(plan)
-
         elif self.init_position:
             start_pose = self.arm.get_current_pose(self.end_effector_link).pose
 
@@ -125,9 +184,9 @@ class ur3_teleop:
             # Append the pose to the waypoints list
             wpose = deepcopy(start_pose)
 
-            wpose.position.x = 0.335
-            wpose.position.y = 0.112
-            wpose.position.z = 0.125
+            wpose.position.x = 0.35118
+            wpose.position.y = 0.11260
+            wpose.position.z = 0.2993
 
             # print(wpose)
             self.waypoints.append(deepcopy(wpose))
@@ -147,12 +206,16 @@ class ur3_teleop:
             wpose = deepcopy(start_pose)
             # Set the first waypoint to be the starting pose
             # Append the pose to the waypoints list
-            wpose.position.x += (self.forward+self.backward)
-            wpose.position.y += (self.left+self.right)
-            wpose.position.z += (self.up+self.down)
+            if self.goal_input:
+                wpose.position.x = self.goal_X
+                wpose.position.y = self.goal_Y
+                wpose.position.z = self.goal_Z
+            else:
+                wpose.position.x += (self.forward+self.backward)
+                wpose.position.y += (self.left+self.right)
+                wpose.position.z += (self.up+self.down)
 
             self.waypoints.append(deepcopy(wpose))
-
             self.arm.set_start_state_to_current_state()
 
             position_offset = np.sqrt((wpose.position.x-start_pose.position.x)**2+(wpose.position.y-start_pose.position.y)**2 \
@@ -163,11 +226,15 @@ class ur3_teleop:
                 rospy.loginfo("Warnig: target position overlaps with the initial position!")
             else:
                 self.cartesian_execut(self.waypoints)
-
+        cur_pose = self.arm.get_current_pose(self.end_effector_link).pose
+        self.point.x = cur_pose.position.x
+        self.point.y = cur_pose.position.y
+        self.point.z = cur_pose.position.z
+        self.cur_pos_pub.publish(self.point)
 
 if __name__ == "__main__":
     try:
         ur3_teleop()
         rospy.spin()
     except KeyboardInterrupt:
-        print "Shutting down MoveItCartesianPath node."
+        print "Shutting down ur3ur3_traj_matlab node."
