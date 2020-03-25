@@ -34,6 +34,7 @@ set ethernet as private, which is discoverable [`solution`](https://superuser.co
 
 Allow ping through the firewall ICMPv4 private (do not enable domine!!!) [`solution`](https://www.faqforge.com/windows/windows-10/how-to-allow-ping-trough-the-firewall-in-windows-10/)
 
+##### 2.3 ROS and Matlab network setting
 ROS and Matlab network setting (can not recieve or publish topic)[`solution`](https://itectec.com/matlab/matlab-why-is-the-ros-subscriber-callback-in-matlab-not-triggered-when-messages-are-published-from-an-external-ros-node-not-in-matlab/)
 in Linux change permanent
 ```
