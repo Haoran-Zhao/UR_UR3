@@ -41,10 +41,24 @@ in Linux change permanent
 gedit .bashrc
 ```
 if pc is not connected to ethernet, comment out last two line of .basrc file. 
-#### 3. Image Processing
 
-#### 4. ROS-Arduino
-##### 4.1
+#### 3. Jog Arm
+Jog arm are from the repository [`Tokyo Opensource Robotics Kyokai Association
+`](https://github.com/tork-a)
+##### 3.1 catkin_make Jog control
+1. clone repository [`fake joint`](https://github.com/tork-a/fake_joint)
+2. clone respository [`jog control`](https://github.com/tork-a/jog_control)
+3. install [`moveit visual tools`](https://github.com/ros-planning/moveit_visual_tools)
+4. catkin ws
+
+If there is a problem with jog_msgs:
+1. Remove the jog_controller folder, and catkin_make.
+2. paste the jog_controller folder back, and catkin_make.
+
+#### 4. Image Processing
+
+#### 5. ROS-Arduino
+##### 5.1
 [`official tutorial`](http://wiki.ros.org/rosserial_arduino/Tutorials)
 [`Generating Message Header File`](http://wiki.ros.org/rosserial_client/Tutorials/Generating%20Message%20Header%20Files)
 
@@ -66,4 +80,4 @@ cd <your workspace>
 source devel/setup.bash
 rosrun rosserial_python serial_node.py /dev/ttyACM1
 ```
-##### 4.2 In Arduino IDE open serial monitor
+##### 5.2 In Arduino IDE open serial monitor
