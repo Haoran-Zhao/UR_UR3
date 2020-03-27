@@ -2,7 +2,7 @@ prefix=/home/haoran/US_UR3/install
 
 Name: ur_e_gazebo
 Description: Description of ur_e_gazebo
-Version: 1.2.5
+Version: 1.2.7
 Cflags: 
 Libs: -L/home/haoran/US_UR3/install/lib 
 Requires: 

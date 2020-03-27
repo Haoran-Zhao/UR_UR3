@@ -1,0 +1,3 @@
+- git:
+    local-name: jog_control
+    uri: http://github.com/tork-a/jog_control

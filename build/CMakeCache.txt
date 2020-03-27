@@ -14,11 +14,38 @@
 # EXTERNAL cache entries
 ########################
 
+//The threading library used by boost-thread
+BOOST_THREAD_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpthread.so
+
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
 
+//Boost atomic library (debug)
+Boost_ATOMIC_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_atomic.so
+
+//Boost atomic library (release)
+Boost_ATOMIC_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_atomic.so
+
+//Boost chrono library (debug)
+Boost_CHRONO_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_chrono.so
+
+//Boost chrono library (release)
+Boost_CHRONO_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_chrono.so
+
+//Boost date_time library (debug)
+Boost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_date_time.so
+
+//Boost date_time library (release)
+Boost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_date_time.so
+
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
+//Boost filesystem library (debug)
+Boost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+
+//Boost filesystem library (release)
+Boost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/include
@@ -34,6 +61,12 @@ Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_system.so
 
 //Boost system library (release)
 Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_system.so
+
+//Boost thread library (debug)
+Boost_THREAD_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_thread.so
+
+//Boost thread library (release)
+Boost_THREAD_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_thread.so
 
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
@@ -259,6 +292,15 @@ Project_BINARY_DIR:STATIC=/home/haoran/US_UR3/build
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src
 
+//The directory containing a CMake configuration file for Qt5Core.
+Qt5Core_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Core
+
+//The directory containing a CMake configuration file for Qt5Gui.
+Qt5Gui_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui
+
+//The directory containing a CMake configuration file for Qt5Widgets.
+Qt5Widgets_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets
+
 //Path to a library.
 RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 
@@ -273,6 +315,9 @@ UBUNTU:BOOL=TRUE
 
 //LSB Distrib - codename tag
 UBUNTU_XENIAL:BOOL=TRUE
+
+//Path to a file.
+_file_name:FILEPATH=/home/haoran/US_UR3/src/jog_control/jog_launch/test/tra1_jog.test
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
@@ -325,6 +370,30 @@ eigen_conversions_DIR:PATH=/opt/ros/kinetic/share/eigen_conversions/cmake
 //The directory containing a CMake configuration file for eigen_stl_containers.
 eigen_stl_containers_DIR:PATH=/opt/ros/kinetic/share/eigen_stl_containers/cmake
 
+//Value Computed by CMake
+fake_joint_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/fake_joint/fake_joint
+
+//Value Computed by CMake
+fake_joint_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/fake_joint/fake_joint
+
+//Value Computed by CMake
+fake_joint_driver_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/fake_joint/fake_joint_driver
+
+//The directory containing a CMake configuration file for fake_joint_driver.
+fake_joint_driver_DIR:PATH=/home/haoran/US_UR3/devel/share/fake_joint_driver/cmake
+
+//Value Computed by CMake
+fake_joint_driver_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/fake_joint/fake_joint_driver
+
+//Value Computed by CMake
+fake_joint_launch_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/fake_joint/fake_joint_launch
+
+//The directory containing a CMake configuration file for fake_joint_launch.
+fake_joint_launch_DIR:PATH=/home/haoran/US_UR3/devel/share/fake_joint_launch/cmake
+
+//Value Computed by CMake
+fake_joint_launch_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/fake_joint/fake_joint_launch
+
 //The directory containing a CMake configuration file for gazebo_msgs.
 gazebo_msgs_DIR:PATH=/opt/ros/kinetic/share/gazebo_msgs/cmake
 
@@ -367,6 +436,9 @@ gmock_build_tests:BOOL=OFF
 //Dependencies for the target
 gmock_main_LIB_DEPENDS:STATIC=general;-lpthread;
 
+//The directory containing a CMake configuration file for graph_msgs.
+graph_msgs_DIR:PATH=/opt/ros/kinetic/share/graph_msgs/cmake
+
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/gtest/gtest
 
@@ -401,14 +473,56 @@ image_transport_DIR:PATH=/opt/ros/kinetic/share/image_transport/cmake
 //The directory containing a CMake configuration file for industrial_msgs.
 industrial_msgs_DIR:PATH=industrial_msgs_DIR-NOTFOUND
 
+//The directory containing a CMake configuration file for interactive_markers.
+interactive_markers_DIR:PATH=/opt/ros/kinetic/share/interactive_markers/cmake
+
+//Value Computed by CMake
+jog_control_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_control
+
+//Value Computed by CMake
+jog_control_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_control/jog_control
+
+//Value Computed by CMake
+jog_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_controller
+
+//The directory containing a CMake configuration file for jog_controller.
+jog_controller_DIR:PATH=/home/haoran/US_UR3/devel/share/jog_controller/cmake
+
+//Dependencies for the target
+jog_controller_LIB_DEPENDS:STATIC=general;Qt5::Widgets;general;/opt/ros/kinetic/lib/libmoveit_visual_tools.so;general;/opt/ros/kinetic/lib/librviz_visual_tools.so;general;/opt/ros/kinetic/lib/librviz_visual_tools_gui.so;general;/opt/ros/kinetic/lib/librviz_visual_tools_remote_control.so;general;/opt/ros/kinetic/lib/librviz_visual_tools_imarker_simple.so;general;/opt/ros/kinetic/lib/libtf_conversions.so;general;/opt/ros/kinetic/lib/libkdl_conversions.so;general;/opt/ros/kinetic/lib/libmoveit_rdf_loader.so;general;/opt/ros/kinetic/lib/libmoveit_kinematics_plugin_loader.so;general;/opt/ros/kinetic/lib/libmoveit_robot_model_loader.so;general;/opt/ros/kinetic/lib/libmoveit_constraint_sampler_manager_loader.so;general;/opt/ros/kinetic/lib/libmoveit_planning_pipeline.so;general;/opt/ros/kinetic/lib/libmoveit_trajectory_execution_manager.so;general;/opt/ros/kinetic/lib/libmoveit_plan_execution.so;general;/opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so;general;/opt/ros/kinetic/lib/libmoveit_collision_plugin_loader.so;general;/opt/ros/kinetic/lib/libchomp_motion_planner.so;general;/opt/ros/kinetic/lib/libmoveit_lazy_free_space_updater.so;general;/opt/ros/kinetic/lib/libmoveit_point_containment_filter.so;general;/opt/ros/kinetic/lib/libmoveit_occupancy_map_monitor.so;general;/opt/ros/kinetic/lib/libmoveit_pointcloud_octomap_updater_core.so;general;/opt/ros/kinetic/lib/libmoveit_semantic_world.so;general;/opt/ros/kinetic/lib/libmoveit_exceptions.so;general;/opt/ros/kinetic/lib/libmoveit_background_processing.so;general;/opt/ros/kinetic/lib/libmoveit_kinematics_base.so;general;/opt/ros/kinetic/lib/libmoveit_robot_model.so;general;/opt/ros/kinetic/lib/libmoveit_transforms.so;general;/opt/ros/kinetic/lib/libmoveit_robot_state.so;general;/opt/ros/kinetic/lib/libmoveit_robot_trajectory.so;general;/opt/ros/kinetic/lib/libmoveit_planning_interface.so;general;/opt/ros/kinetic/lib/libmoveit_collision_detection.so;general;/opt/ros/kinetic/lib/libmoveit_collision_detection_fcl.so;general;/opt/ros/kinetic/lib/libmoveit_kinematic_constraints.so;general;/opt/ros/kinetic/lib/libmoveit_planning_scene.so;general;/opt/ros/kinetic/lib/libmoveit_constraint_samplers.so;general;/opt/ros/kinetic/lib/libmoveit_planning_request_adapter.so;general;/opt/ros/kinetic/lib/libmoveit_profiler.so;general;/opt/ros/kinetic/lib/libmoveit_trajectory_processing.so;general;/opt/ros/kinetic/lib/libmoveit_distance_field.so;general;/opt/ros/kinetic/lib/libmoveit_collision_distance_field.so;general;/opt/ros/kinetic/lib/libmoveit_kinematics_metrics.so;general;/opt/ros/kinetic/lib/libmoveit_dynamics_solver.so;general;/opt/ros/kinetic/lib/libmoveit_utils.so;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;general;/usr/lib/x86_64-linux-gnu/libfcl.so;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/libgeometric_shapes.so;general;/opt/ros/kinetic/lib/liboctomap.so;general;/opt/ros/kinetic/lib/liboctomath.so;general;/opt/ros/kinetic/lib/libkdl_parser.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.2;general;/opt/ros/kinetic/lib/librandom_numbers.so;general;/opt/ros/kinetic/lib/libsrdfdom.so;general;/opt/ros/kinetic/lib/librviz.so;general;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;general;/usr/lib/x86_64-linux-gnu/libOgreMain.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;general;/usr/lib/x86_64-linux-gnu/libGL.so;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libinteractive_markers.so;general;/opt/ros/kinetic/lib/liblaser_geometry.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libresource_retriever.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/opt/ros/kinetic/share/rviz/cmake/../../../lib/librviz_default_plugin.so;
+
+//Value Computed by CMake
+jog_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_control/jog_controller
+
+//Value Computed by CMake
+jog_launch_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_launch
+
+//Value Computed by CMake
+jog_launch_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_control/jog_launch
+
+//Value Computed by CMake
+jog_msgs_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_msgs
+
+//The directory containing a CMake configuration file for jog_msgs.
+jog_msgs_DIR:PATH=/home/haoran/US_UR3/devel/share/jog_msgs/cmake
+
+//Value Computed by CMake
+jog_msgs_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_control/jog_msgs
+
 //The directory containing a CMake configuration file for kdl_conversions.
 kdl_conversions_DIR:PATH=/opt/ros/kinetic/share/kdl_conversions/cmake
 
 //The directory containing a CMake configuration file for kdl_parser.
 kdl_parser_DIR:PATH=/opt/ros/kinetic/share/kdl_parser/cmake
 
+//The directory containing a CMake configuration file for laser_geometry.
+laser_geometry_DIR:PATH=/opt/ros/kinetic/share/laser_geometry/cmake
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libtf2.so
+
+//The directory containing a CMake configuration file for map_msgs.
+map_msgs_DIR:PATH=/opt/ros/kinetic/share/map_msgs/cmake
 
 //Value Computed by CMake
 matlab_gazebo_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/matlab_gazebo
@@ -440,6 +554,12 @@ moveit_ros_perception_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_perception/cmak
 //The directory containing a CMake configuration file for moveit_ros_planning.
 moveit_ros_planning_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_planning/cmake
 
+//The directory containing a CMake configuration file for moveit_visual_tools.
+moveit_visual_tools_DIR:PATH=/opt/ros/kinetic/share/moveit_visual_tools/cmake
+
+//The directory containing a CMake configuration file for nav_msgs.
+nav_msgs_DIR:PATH=/opt/ros/kinetic/share/nav_msgs/cmake
+
 //The directory containing a CMake configuration file for object_recognition_msgs.
 object_recognition_msgs_DIR:PATH=/opt/ros/kinetic/share/object_recognition_msgs/cmake
 
@@ -457,6 +577,9 @@ pluginlib_DIR:PATH=/opt/ros/kinetic/share/pluginlib/cmake
 
 //The directory containing a CMake configuration file for random_numbers.
 random_numbers_DIR:PATH=/opt/ros/kinetic/share/random_numbers/cmake
+
+//The directory containing a CMake configuration file for resource_retriever.
+resource_retriever_DIR:PATH=/opt/ros/kinetic/share/resource_retriever/cmake
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
@@ -485,14 +608,26 @@ roslaunch_DIR:PATH=/opt/ros/kinetic/share/roslaunch/cmake
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/kinetic/share/roslib/cmake
 
+//The directory containing a CMake configuration file for roslint.
+roslint_DIR:PATH=/opt/ros/kinetic/share/roslint/cmake
+
 //The directory containing a CMake configuration file for rospack.
 rospack_DIR:PATH=/opt/ros/kinetic/share/rospack/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
 
+//The directory containing a CMake configuration file for rostest.
+rostest_DIR:PATH=/opt/ros/kinetic/share/rostest/cmake
+
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
+
+//The directory containing a CMake configuration file for rviz.
+rviz_DIR:PATH=/opt/ros/kinetic/share/rviz/cmake
+
+//The directory containing a CMake configuration file for rviz_visual_tools.
+rviz_visual_tools_DIR:PATH=/opt/ros/kinetic/share/rviz_visual_tools/cmake
 
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/kinetic/share/sensor_msgs/cmake
@@ -677,6 +812,9 @@ urdfdom_py_DIR:PATH=/opt/ros/kinetic/share/urdfdom_py/cmake
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/kinetic/share/visualization_msgs/cmake
 
+//The directory containing a CMake configuration file for xacro.
+xacro_DIR:PATH=/opt/ros/kinetic/share/xacro/cmake
+
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
 
@@ -685,8 +823,24 @@ xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Boost_ATOMIC_LIBRARY_DEBUG
+Boost_ATOMIC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_ATOMIC_LIBRARY_RELEASE
+Boost_ATOMIC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_CHRONO_LIBRARY_DEBUG
+Boost_CHRONO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_CHRONO_LIBRARY_RELEASE
+Boost_CHRONO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_DEBUG
+Boost_DATE_TIME_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_RELEASE
+Boost_DATE_TIME_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_DIR
 Boost_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_DEBUG
+Boost_FILESYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_RELEASE
+Boost_FILESYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_INCLUDE_DIR
 Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_LIBRARY_DIR_DEBUG
@@ -697,6 +851,10 @@ Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
 Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
 Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_DEBUG
+Boost_THREAD_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_RELEASE
+Boost_THREAD_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/haoran/US_UR3/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/haoran/US_UR3/build/test_results
@@ -794,7 +952,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=23
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=30
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -868,7 +1026,7 @@ PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
 //Components requested for this build tree.
-_Boost_COMPONENTS_SEARCHED:INTERNAL=system
+_Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;filesystem;system;thread
 //Last used Boost_INCLUDE_DIR value.
 _Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
 //Last used Boost_LIBRARY_DIR_DEBUG value.

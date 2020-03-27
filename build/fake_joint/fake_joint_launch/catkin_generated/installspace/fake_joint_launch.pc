@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/install
+
+Name: fake_joint_launch
+Description: Description of fake_joint_launch
+Version: 0.0.4
+Cflags: 
+Libs: -L/home/haoran/US_UR3/install/lib 
+Requires: fake_joint_driver

@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: jog_launch
+Description: Description of jog_launch
+Version: 0.0.2
+Cflags: 
+Libs: -L/home/haoran/US_UR3/devel/lib 
+Requires: 

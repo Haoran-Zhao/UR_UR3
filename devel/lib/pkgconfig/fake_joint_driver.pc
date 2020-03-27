@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: fake_joint_driver
+Description: Description of fake_joint_driver
+Version: 0.0.4
+Cflags: -I/home/haoran/US_UR3/src/fake_joint/fake_joint_driver/include
+Libs: -L/home/haoran/US_UR3/devel/lib 
+Requires: hardware_interface roscpp

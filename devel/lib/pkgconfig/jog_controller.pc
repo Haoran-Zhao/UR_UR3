@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: jog_controller
+Description: Description of jog_controller
+Version: 0.0.2
+Cflags: 
+Libs: -L/home/haoran/US_UR3/devel/lib 
+Requires: actionlib control_msgs jog_msgs moveit_core moveit_ros_planning moveit_visual_tools moveit_msgs roscpp
