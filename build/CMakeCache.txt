@@ -247,6 +247,9 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //The directory containing a CMake configuration file for GMock.
 GMock_DIR:PATH=GMock_DIR-NOTFOUND
 
@@ -477,6 +480,12 @@ industrial_msgs_DIR:PATH=industrial_msgs_DIR-NOTFOUND
 interactive_markers_DIR:PATH=/opt/ros/kinetic/share/interactive_markers/cmake
 
 //Value Computed by CMake
+jog_arm_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_arm
+
+//Value Computed by CMake
+jog_arm_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_arm
+
+//Value Computed by CMake
 jog_control_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_control
 
 //Value Computed by CMake
@@ -542,17 +551,35 @@ message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
 //The directory containing a CMake configuration file for moveit_core.
 moveit_core_DIR:PATH=/opt/ros/kinetic/share/moveit_core/cmake
 
+//Value Computed by CMake
+moveit_jog_arm_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/moveit_jog_arm
+
+//Value Computed by CMake
+moveit_jog_arm_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/moveit_jog_arm
+
 //The directory containing a CMake configuration file for moveit_kinematics.
 moveit_kinematics_DIR:PATH=/opt/ros/kinetic/share/moveit_kinematics/cmake
 
 //The directory containing a CMake configuration file for moveit_msgs.
 moveit_msgs_DIR:PATH=/opt/ros/kinetic/share/moveit_msgs/cmake
 
+//The directory containing a CMake configuration file for moveit_ros_manipulation.
+moveit_ros_manipulation_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_manipulation/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_move_group.
+moveit_ros_move_group_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_move_group/cmake
+
 //The directory containing a CMake configuration file for moveit_ros_perception.
 moveit_ros_perception_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_perception/cmake
 
 //The directory containing a CMake configuration file for moveit_ros_planning.
 moveit_ros_planning_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_planning/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_planning_interface.
+moveit_ros_planning_interface_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_planning_interface/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_warehouse.
+moveit_ros_warehouse_DIR:PATH=/opt/ros/kinetic/share/moveit_ros_warehouse/cmake
 
 //The directory containing a CMake configuration file for moveit_visual_tools.
 moveit_visual_tools_DIR:PATH=/opt/ros/kinetic/share/moveit_visual_tools/cmake
@@ -613,6 +640,9 @@ roslint_DIR:PATH=/opt/ros/kinetic/share/roslint/cmake
 
 //The directory containing a CMake configuration file for rospack.
 rospack_DIR:PATH=/opt/ros/kinetic/share/rospack/cmake
+
+//The directory containing a CMake configuration file for rosparam_shortcuts.
+rosparam_shortcuts_DIR:PATH=/opt/ros/kinetic/share/rosparam_shortcuts/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
@@ -812,6 +842,9 @@ urdfdom_py_DIR:PATH=/opt/ros/kinetic/share/urdfdom_py/cmake
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/kinetic/share/visualization_msgs/cmake
 
+//The directory containing a CMake configuration file for warehouse_ros.
+warehouse_ros_DIR:PATH=/opt/ros/kinetic/share/warehouse_ros/cmake
+
 //The directory containing a CMake configuration file for xacro.
 xacro_DIR:PATH=/opt/ros/kinetic/share/xacro/cmake
 
@@ -952,7 +985,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=30
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=31
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
