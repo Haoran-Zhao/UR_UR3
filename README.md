@@ -49,7 +49,7 @@ Jog arm are from the repository [`Tokyo Opensource Robotics Kyokai Association
 1. clone repository [`fake joint`](https://github.com/tork-a/fake_joint)
 2. clone respository [`jog control`](https://github.com/tork-a/jog_control)
 3. install [`moveit visual tools`](https://github.com/ros-planning/moveit_visual_tools)
-4. catkin ws
+4. catkin make ws
 
 If there is a problem with jog_msgs:
 1. Remove the jog_controller folder, and catkin_make.
