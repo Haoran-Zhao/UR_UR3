@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="paused" default="true" doc="Starts gazebo in paused mode" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="sim" default="true" />
+  <arg name="debug" default="false" />
+  <arg name="config" default="true" />
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- send robot urdf to param server -->
+  <include file="$(find ur_description)/launch/ur3_upload.launch">
+    <arg name="limited" value="$(arg limited)"/>
+  </include>
+
+  <!-- spawn in gazebo -->
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="UR3" pkg="gazebo_ros" type="spawn_model" args="-urdf -unpause
+    -param robot_description -model robot
+    -z 0.9 -y -0.127 -x -1.15
+    -J robot::shoulder_pan_joint 0 -J robot::shoulder_lift_joint -1.0844 -J robot::elbow_joint 1.8615147
+    -J robot::wrist_1_joint -3.87846 -J robot::wrist_2_joint -1.570656 -J robot::wrist_3_joint 0" respawn="false" output="screen" />
+  <!-- publisher node -->
+
+  <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
+
+  <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur3.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager"
+     args="spawn arm_controller" respawn="false" output="screen"/>
+
+  <!-- load other controllers -->
+  <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="load joint_group_position_controller" />
+
+  <!-- launch ur3_moveit_planning_execution -->
+  <include file="$(find ur3_moveit_config)/launch/ur3_moveit_planning_execution.launch">
+   <arg name="sim" value="$(arg sim)"/>
+   <arg name="limited" value="$(arg limited)"/>
+  </include>
+
+  <!-- Launch moveit_rviz -->
+  <include file="$(find ur3_moveit_config)/launch/moveit_rviz.launch">
+  <arg name="config" value="$(arg config)"/>
+  </include>
+
+  <include file="$(find jog_arm)/launch/jog_with_xbox.launch" />
+
+</launch>
