@@ -45,7 +45,11 @@ if pc is not connected to ethernet, comment out last two line of .basrc file.
 #### 3. Jog Arm
 Jog arm are from the repository [`Tokyo Opensource Robotics Kyokai Association
 `](https://github.com/tork-a)
-##### 3.1 catkin_make Jog control
+##### 3.1 Jog arm
+The real time control code are from the repository ['jog_arm'](https://github.com/UTNuclearRoboticsPublic/jog_arm)
+General issues can be found in the [`issue`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues)
+
+##### 3.2 catkin_make Jog control
 1. clone repository [`fake joint`](https://github.com/tork-a/fake_joint)
 2. clone respository [`jog control`](https://github.com/tork-a/jog_control)
 3. install [`moveit visual tools`](https://github.com/ros-planning/moveit_visual_tools)
