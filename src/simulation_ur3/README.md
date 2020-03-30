@@ -1,15 +1,18 @@
 # Simulate UR3 in Gazebo and Teleop with keyboard
 
 ##### Reading from the keyboard  and Publishing to Tracker!
----------------------------
+
 Moving along x and z axis:
         w
+        
    a    s    d
+   
         x
 
 Moving along y axis and initialize
----------------------------
+
    I        P
+   
    J        L
 
 ###### annotation
