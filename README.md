@@ -46,7 +46,7 @@ if pc is not connected to ethernet, comment out last two line of .basrc file.
 Jog arm are from the repository [`Tokyo Opensource Robotics Kyokai Association
 `](https://github.com/tork-a)
 ##### 3.1 Jog arm
-The real time control code are from the repository ['jog_arm'](https://github.com/UTNuclearRoboticsPublic/jog_arm)
+The real time control code (Jog_ur3) are from the repository ['jog_arm'](https://github.com/UTNuclearRoboticsPublic/jog_arm)
 General issues can be found in the [`issue`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues)
 
 ##### 3.2 catkin_make Jog control
