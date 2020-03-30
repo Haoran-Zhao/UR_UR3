@@ -510,13 +510,19 @@ jog_launch_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_launch
 jog_launch_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_control/jog_launch
 
 //Value Computed by CMake
-jog_msgs_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_msgs
+jog_msgs_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_ur3/jog_msgs
 
 //The directory containing a CMake configuration file for jog_msgs.
 jog_msgs_DIR:PATH=/home/haoran/US_UR3/devel/share/jog_msgs/cmake
 
 //Value Computed by CMake
-jog_msgs_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_control/jog_msgs
+jog_msgs_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_ur3/jog_msgs
+
+//Value Computed by CMake
+jog_ur3_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_ur3/jog_ur3
+
+//Value Computed by CMake
+jog_ur3_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_ur3/jog_ur3
 
 //The directory containing a CMake configuration file for kdl_conversions.
 kdl_conversions_DIR:PATH=/opt/ros/kinetic/share/kdl_conversions/cmake
@@ -985,7 +991,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=31
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=25
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

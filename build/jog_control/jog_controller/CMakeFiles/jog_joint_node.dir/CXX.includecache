@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/haoran/US_UR3/devel/include/jog_msgs/JogJoint.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-
 /home/haoran/US_UR3/src/jog_control/jog_controller/include/jog_controller/jog_joint_node.h
 string
 -

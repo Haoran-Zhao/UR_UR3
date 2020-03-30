@@ -2,7 +2,7 @@ prefix=/home/haoran/US_UR3/devel
 
 Name: jog_msgs
 Description: Description of jog_msgs
-Version: 0.0.2
+Version: 0.0.0
 Cflags: -I/home/haoran/US_UR3/devel/include
 Libs: -L/home/haoran/US_UR3/devel/lib 
 Requires: message_runtime std_msgs geometry_msgs
