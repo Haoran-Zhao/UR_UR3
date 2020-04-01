@@ -2935,17 +2935,30 @@ octomap_msgs_generate_messages_cpp/fast:
 .PHONY : octomap_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named moveit_ros_manipulation_gencfg
+# Target rules for targets named xbox_to_twist_test
 
 # Build rule for target.
-moveit_ros_manipulation_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 moveit_ros_manipulation_gencfg
-.PHONY : moveit_ros_manipulation_gencfg
+xbox_to_twist_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbox_to_twist_test
+.PHONY : xbox_to_twist_test
 
 # fast build rule for target.
-moveit_ros_manipulation_gencfg/fast:
-	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
-.PHONY : moveit_ros_manipulation_gencfg/fast
+xbox_to_twist_test/fast:
+	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build
+.PHONY : xbox_to_twist_test/fast
+
+#=============================================================================
+# Target rules for targets named jog_arm_server
+
+# Build rule for target.
+jog_arm_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 jog_arm_server
+.PHONY : jog_arm_server
+
+# fast build rule for target.
+jog_arm_server/fast:
+	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build.make jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build
+.PHONY : jog_arm_server/fast
 
 #=============================================================================
 # Target rules for targets named xbox_to_twist
@@ -2961,17 +2974,17 @@ xbox_to_twist/fast:
 .PHONY : xbox_to_twist/fast
 
 #=============================================================================
-# Target rules for targets named jog_arm_server
+# Target rules for targets named moveit_ros_manipulation_gencfg
 
 # Build rule for target.
-jog_arm_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 jog_arm_server
-.PHONY : jog_arm_server
+moveit_ros_manipulation_gencfg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 moveit_ros_manipulation_gencfg
+.PHONY : moveit_ros_manipulation_gencfg
 
 # fast build rule for target.
-jog_arm_server/fast:
-	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build.make jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build
-.PHONY : jog_arm_server/fast
+moveit_ros_manipulation_gencfg/fast:
+	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
+.PHONY : moveit_ros_manipulation_gencfg/fast
 
 #=============================================================================
 # Target rules for targets named run_tests_ur10_e_moveit_config_roslaunch-check
@@ -3745,9 +3758,10 @@ help:
 	@echo "... object_recognition_msgs_generate_messages_lisp"
 	@echo "... object_recognition_msgs_generate_messages_nodejs"
 	@echo "... octomap_msgs_generate_messages_cpp"
-	@echo "... moveit_ros_manipulation_gencfg"
-	@echo "... xbox_to_twist"
+	@echo "... xbox_to_twist_test"
 	@echo "... jog_arm_server"
+	@echo "... xbox_to_twist"
+	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... run_tests_ur10_e_moveit_config_roslaunch-check"
 	@echo "... run_tests_ur10_e_moveit_config"
 	@echo "... _run_tests_ur10_e_moveit_config_roslaunch-check_tests_moveit_planning_execution.xml"

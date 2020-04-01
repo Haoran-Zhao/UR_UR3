@@ -26,6 +26,9 @@
     -z 0.9 -y -0.127 -x -1.15
     -J robot::shoulder_pan_joint 0 -J robot::shoulder_lift_joint -1.0844 -J robot::elbow_joint 1.8615147
     -J robot::wrist_1_joint -3.87846 -J robot::wrist_2_joint -1.570656 -J robot::wrist_3_joint 0" respawn="false" output="screen" />
+
+  <!-- <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.1" respawn="false" output="screen" /> -->
+
   <!-- publisher node -->
 
   <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
@@ -48,6 +51,20 @@
   <arg name="config" value="$(arg config)"/>
   </include>
 
-  <include file="$(find jog_ur3)/launch/jog_with_xbox.launch" />
+  <!-- run nodes -->
+  <node name="joy_node" pkg="joy" type="joy_node" >
+    <param name="dev" type="string" value="/dev/input/js0"/>
+    <param name="deadzone" value="0.12"/>
+  </node>
+
+  <!-- <node name="initial_node" pkg="jog_ur3" type="initial_node" output="screen" /> -->
+
+  <node name="xbox_to_twist" pkg="jog_ur3" type="xbox_to_twist_test" output="screen" />
+
+  <node name="jog_arm_server" pkg="jog_ur3" type="jog_arm_server" output="screen" >
+    <param name="parameter_ns" type="string" value="jog_arm_server" />
+    <rosparam command="load" file="$(find jog_ur3)/config/jog_settings.yaml" />
+  </node>
+
 
 </launch>

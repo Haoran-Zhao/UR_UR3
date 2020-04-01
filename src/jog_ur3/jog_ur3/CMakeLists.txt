@@ -18,6 +18,7 @@ catkin_package(
   INCLUDE_DIRS
     include
   CATKIN_DEPENDS
+    rospy
     roscpp
     moveit_ros_manipulation
     moveit_ros_move_group
@@ -39,7 +40,11 @@ add_executable(xbox_to_twist src/xbox_to_twist.cpp)
 add_dependencies(xbox_to_twist ${catkin_EXPORTED_TARGETS})
 target_link_libraries(xbox_to_twist ${catkin_LIBRARIES} ${Eigen_LIBRARIES})
 
-install(TARGETS jog_arm_server xbox_to_twist
+add_executable(xbox_to_twist_test src/xbox_to_twist_test.cpp)
+add_dependencies(xbox_to_twist_test ${catkin_EXPORTED_TARGETS})
+target_link_libraries(xbox_to_twist_test ${catkin_LIBRARIES} ${Eigen_LIBRARIES})
+
+install(TARGETS jog_arm_server xbox_to_twist xbox_to_twist_test
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

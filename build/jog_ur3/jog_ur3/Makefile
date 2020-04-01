@@ -56,37 +56,16 @@ CMAKE_BINARY_DIR = /home/haoran/US_UR3/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target test
+test/fast: test
 
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+.PHONY : test/fast
 
 # Special rule for the target install
 install: preinstall
@@ -100,16 +79,26 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : test/fast
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -122,16 +111,27 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target install/strip
-install/strip/fast: install/strip
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : install/strip/fast
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,19 +166,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-.PHONY : jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule
+.PHONY : jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule
 
 # Convenience name for target.
-moveit_ros_manipulation_gencfg: jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+xbox_to_twist_test: jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule
 
-.PHONY : moveit_ros_manipulation_gencfg
+.PHONY : xbox_to_twist_test
 
 # fast build rule for target.
-moveit_ros_manipulation_gencfg/fast:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
-.PHONY : moveit_ros_manipulation_gencfg/fast
+xbox_to_twist_test/fast:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build
+.PHONY : xbox_to_twist_test/fast
+
+# Convenience name for target.
+jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule
+.PHONY : jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule
+
+# Convenience name for target.
+jog_arm_server: jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule
+
+.PHONY : jog_arm_server
+
+# fast build rule for target.
+jog_arm_server/fast:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build.make jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build
+.PHONY : jog_arm_server/fast
 
 # Convenience name for target.
 jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist.dir/rule:
@@ -196,19 +211,19 @@ xbox_to_twist/fast:
 .PHONY : xbox_to_twist/fast
 
 # Convenience name for target.
-jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule
-.PHONY : jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule
+jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+.PHONY : jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
 
 # Convenience name for target.
-jog_arm_server: jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/rule
+moveit_ros_manipulation_gencfg: jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
 
-.PHONY : jog_arm_server
+.PHONY : moveit_ros_manipulation_gencfg
 
 # fast build rule for target.
-jog_arm_server/fast:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build.make jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir/build
-.PHONY : jog_arm_server/fast
+moveit_ros_manipulation_gencfg/fast:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make jog_ur3/jog_ur3/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
+.PHONY : moveit_ros_manipulation_gencfg/fast
 
 src/jog_arm_server.o: src/jog_arm_server.cpp.o
 
@@ -264,28 +279,59 @@ src/xbox_to_twist.cpp.s:
 	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist.dir/src/xbox_to_twist.cpp.s
 .PHONY : src/xbox_to_twist.cpp.s
 
+src/xbox_to_twist_test.o: src/xbox_to_twist_test.cpp.o
+
+.PHONY : src/xbox_to_twist_test.o
+
+# target to build an object file
+src/xbox_to_twist_test.cpp.o:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/src/xbox_to_twist_test.cpp.o
+.PHONY : src/xbox_to_twist_test.cpp.o
+
+src/xbox_to_twist_test.i: src/xbox_to_twist_test.cpp.i
+
+.PHONY : src/xbox_to_twist_test.i
+
+# target to preprocess a source file
+src/xbox_to_twist_test.cpp.i:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/src/xbox_to_twist_test.cpp.i
+.PHONY : src/xbox_to_twist_test.cpp.i
+
+src/xbox_to_twist_test.s: src/xbox_to_twist_test.cpp.s
+
+.PHONY : src/xbox_to_twist_test.s
+
+# target to generate assembly for a file
+src/xbox_to_twist_test.cpp.s:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/src/xbox_to_twist_test.cpp.s
+.PHONY : src/xbox_to_twist_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... list_install_components"
-	@echo "... install"
-	@echo "... moveit_ros_manipulation_gencfg"
-	@echo "... xbox_to_twist"
-	@echo "... test"
+	@echo "... xbox_to_twist_test"
 	@echo "... jog_arm_server"
-	@echo "... install/local"
+	@echo "... test"
+	@echo "... xbox_to_twist"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... install/strip"
+	@echo "... install/local"
+	@echo "... moveit_ros_manipulation_gencfg"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
 	@echo "... src/jog_arm_server.o"
 	@echo "... src/jog_arm_server.i"
 	@echo "... src/jog_arm_server.s"
 	@echo "... src/xbox_to_twist.o"
 	@echo "... src/xbox_to_twist.i"
 	@echo "... src/xbox_to_twist.s"
+	@echo "... src/xbox_to_twist_test.o"
+	@echo "... src/xbox_to_twist_test.i"
+	@echo "... src/xbox_to_twist_test.s"
 .PHONY : help
 
 
