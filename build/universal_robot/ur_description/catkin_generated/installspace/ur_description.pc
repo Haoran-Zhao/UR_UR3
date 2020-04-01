@@ -4,5 +4,5 @@ Name: ur_description
 Description: Description of ur_description
 Version: 1.2.7
 Cflags: 
-Libs: -L/home/haoran/US_UR3/install/lib 
+Libs: -L${prefix}/lib 
 Requires: 

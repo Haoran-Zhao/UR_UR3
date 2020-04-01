@@ -77,6 +77,7 @@ dea1057e6ca3186d38e2ea657c7fcb69 /home/haoran/US_UR3/devel/share/gennodejs/ros/u
 57f15cbe52d9ff9ea3d9693e0b4a5674 /home/haoran/US_UR3/devel/share/roseus/ros/jog_msgs/manifest.l
 a981caf66b7187d34516f8ae3e2de1af /home/haoran/US_UR3/devel/share/roseus/ros/jog_msgs/msg/JogFrame.l
 f148a7072bff4ba599bd04889de50ec5 /home/haoran/US_UR3/devel/share/roseus/ros/jog_msgs/msg/JogJoint.l
+799c37622cec7c48f7ca31a1358caac7 /home/haoran/US_UR3/devel/share/roseus/ros/jog_ur3/manifest.l
 0b28c2dc2818bcca6922068cc3380e2c /home/haoran/US_UR3/devel/share/roseus/ros/matlab_gazebo/manifest.l
 28c977cb214f7202a4fb33a4c78ec039 /home/haoran/US_UR3/devel/share/roseus/ros/matlab_gazebo/msg/PosTracker.l
 19890bbd00a441e8ea83482dff83bd79 /home/haoran/US_UR3/devel/share/roseus/ros/matlab_gazebo/msg/Tracker.l
@@ -107,6 +108,7 @@ c70e990bf7c887572c1648fe728c1af4 jog_ur3/jog_msgs/CMakeFiles/jog_msgs_generate_m
 c70e990bf7c887572c1648fe728c1af4 jog_ur3/jog_msgs/CMakeFiles/jog_msgs_generate_messages_lisp
 c70e990bf7c887572c1648fe728c1af4 jog_ur3/jog_msgs/CMakeFiles/jog_msgs_generate_messages_nodejs
 c70e990bf7c887572c1648fe728c1af4 jog_ur3/jog_msgs/CMakeFiles/jog_msgs_generate_messages_py
+7df2b24184c80529ad75e16f792eaa3a jog_ur3/jog_ur3/CMakeFiles/jog_ur3_generate_messages_eus
 b772cd3c9bb87d5cdfd36ac8983ffe8b matlab_gazebo/CMakeFiles/_matlab_gazebo_generate_messages_check_deps_PosTracker
 026848b3bb120092219744600224fcb2 matlab_gazebo/CMakeFiles/_matlab_gazebo_generate_messages_check_deps_Tracker
 138b4ec28938bbb7a088d2d8b88a39e5 matlab_gazebo/CMakeFiles/matlab_gazebo_generate_messages_cpp

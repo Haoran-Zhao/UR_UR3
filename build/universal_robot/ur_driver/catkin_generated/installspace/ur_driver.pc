@@ -3,6 +3,6 @@ prefix=/home/haoran/US_UR3/install
 Name: ur_driver
 Description: Description of ur_driver
 Version: 1.2.7
-Cflags: -I/home/haoran/US_UR3/install/include
-Libs: -L/home/haoran/US_UR3/install/lib 
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
 Requires: dynamic_reconfigure

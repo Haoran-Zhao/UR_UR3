@@ -4,5 +4,5 @@ Name: ur_driver
 Description: Description of ur_driver
 Version: 1.2.7
 Cflags: -I/home/haoran/US_UR3/devel/include
-Libs: -L/home/haoran/US_UR3/devel/lib 
+Libs: -L${prefix}/lib 
 Requires: dynamic_reconfigure

@@ -14,6 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(Eigen3 REQUIRED)
 
+generate_messages(DEPENDENCIES std_msgs)
+
 catkin_package(
   INCLUDE_DIRS
     include

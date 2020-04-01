@@ -123,6 +123,29 @@ foreach(library ${libraries})
     list(APPEND jog_ur3_LIBRARIES ${library})
   elseif(${library} MATCHES "^-l")
     list(APPEND jog_ur3_LIBRARIES ${library})
+  elseif(${library} MATCHES "^-")
+    # This is a linker flag/option (like -pthread)
+    # There's no standard variable for these, so create an interface library to hold it
+    if(NOT jog_ur3_NUM_DUMMY_TARGETS)
+      set(jog_ur3_NUM_DUMMY_TARGETS 0)
+    endif()
+    # Make sure the target name is unique
+    set(interface_target_name "catkin::jog_ur3::wrapped-linker-option${jog_ur3_NUM_DUMMY_TARGETS}")
+    while(TARGET "${interface_target_name}")
+      math(EXPR jog_ur3_NUM_DUMMY_TARGETS "${jog_ur3_NUM_DUMMY_TARGETS}+1")
+      set(interface_target_name "catkin::jog_ur3::wrapped-linker-option${jog_ur3_NUM_DUMMY_TARGETS}")
+    endwhile()
+    add_library("${interface_target_name}" INTERFACE IMPORTED)
+    if("${CMAKE_VERSION}" VERSION_LESS "3.13.0")
+      set_property(
+        TARGET
+        "${interface_target_name}"
+        APPEND PROPERTY
+        INTERFACE_LINK_LIBRARIES "${library}")
+    else()
+      target_link_options("${interface_target_name}" INTERFACE "${library}")
+    endif()
+    list(APPEND jog_ur3_LIBRARIES "${interface_target_name}")
   elseif(TARGET ${library})
     list(APPEND jog_ur3_LIBRARIES ${library})
   elseif(IS_ABSOLUTE ${library})
@@ -154,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(jog_ur3_EXPORTED_TARGETS "")
+set(jog_ur3_EXPORTED_TARGETS "jog_ur3_generate_messages_cpp;jog_ur3_generate_messages_eus;jog_ur3_generate_messages_lisp;jog_ur3_generate_messages_nodejs;jog_ur3_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${jog_ur3_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -191,7 +214,7 @@ foreach(depend ${depends})
   list(APPEND jog_ur3_EXPORTED_TARGETS ${${jog_ur3_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "jog_ur3-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${jog_ur3_DIR}/${extra})
