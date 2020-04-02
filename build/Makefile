@@ -2961,19 +2961,6 @@ jog_arm_server/fast:
 .PHONY : jog_arm_server/fast
 
 #=============================================================================
-# Target rules for targets named xbox_to_twist_test
-
-# Build rule for target.
-xbox_to_twist_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbox_to_twist_test
-.PHONY : xbox_to_twist_test
-
-# fast build rule for target.
-xbox_to_twist_test/fast:
-	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build
-.PHONY : xbox_to_twist_test/fast
-
-#=============================================================================
 # Target rules for targets named jog_ur3_genpy
 
 # Build rule for target.
@@ -3115,6 +3102,19 @@ jog_ur3_generate_messages_nodejs: cmake_check_build_system
 jog_ur3_generate_messages_nodejs/fast:
 	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/jog_ur3_generate_messages_nodejs.dir/build.make jog_ur3/jog_ur3/CMakeFiles/jog_ur3_generate_messages_nodejs.dir/build
 .PHONY : jog_ur3_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named UR3_Xbox
+
+# Build rule for target.
+UR3_Xbox: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 UR3_Xbox
+.PHONY : UR3_Xbox
+
+# fast build rule for target.
+UR3_Xbox/fast:
+	$(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build.make jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build
+.PHONY : UR3_Xbox/fast
 
 #=============================================================================
 # Target rules for targets named jog_ur3_gennodejs
@@ -3903,7 +3903,6 @@ help:
 	@echo "... octomap_msgs_generate_messages_cpp"
 	@echo "... xbox_to_twist"
 	@echo "... jog_arm_server"
-	@echo "... xbox_to_twist_test"
 	@echo "... jog_ur3_genpy"
 	@echo "... jog_ur3_generate_messages_py"
 	@echo "... jog_ur3_gencpp"
@@ -3915,6 +3914,7 @@ help:
 	@echo "... jog_ur3_generate_messages_lisp"
 	@echo "... jog_ur3_genlisp"
 	@echo "... jog_ur3_generate_messages_nodejs"
+	@echo "... UR3_Xbox"
 	@echo "... jog_ur3_gennodejs"
 	@echo "... run_tests_ur10_e_moveit_config_roslaunch-check"
 	@echo "... run_tests_ur10_e_moveit_config"

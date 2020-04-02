@@ -108,21 +108,21 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/jog_ur3" TYPE EXECUTABLE FILES "/home/haoran/US_UR3/devel/lib/jog_ur3/xbox_to_twist_test")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/jog_ur3" TYPE EXECUTABLE FILES "/home/haoran/US_UR3/devel/lib/jog_ur3/UR3_Xbox")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox"
          OLD_RPATH "/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/xbox_to_twist_test")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/jog_ur3/UR3_Xbox")
     endif()
   endif()
 endif()

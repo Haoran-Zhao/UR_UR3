@@ -196,21 +196,6 @@ jog_arm_server/fast:
 .PHONY : jog_arm_server/fast
 
 # Convenience name for target.
-jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule
-.PHONY : jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule
-
-# Convenience name for target.
-xbox_to_twist_test: jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/rule
-
-.PHONY : xbox_to_twist_test
-
-# fast build rule for target.
-xbox_to_twist_test/fast:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build
-.PHONY : xbox_to_twist_test/fast
-
-# Convenience name for target.
 jog_ur3/jog_ur3/CMakeFiles/jog_ur3_genpy.dir/rule:
 	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/jog_ur3_genpy.dir/rule
 .PHONY : jog_ur3/jog_ur3/CMakeFiles/jog_ur3_genpy.dir/rule
@@ -376,6 +361,21 @@ jog_ur3_generate_messages_nodejs/fast:
 .PHONY : jog_ur3_generate_messages_nodejs/fast
 
 # Convenience name for target.
+jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/rule:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/rule
+.PHONY : jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/rule
+
+# Convenience name for target.
+UR3_Xbox: jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/rule
+
+.PHONY : UR3_Xbox
+
+# fast build rule for target.
+UR3_Xbox/fast:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build.make jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build
+.PHONY : UR3_Xbox/fast
+
+# Convenience name for target.
 jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir/rule:
 	cd /home/haoran/US_UR3/build && $(MAKE) -f CMakeFiles/Makefile2 jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir/rule
 .PHONY : jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir/rule
@@ -389,6 +389,33 @@ jog_ur3_gennodejs: jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir/rule
 jog_ur3_gennodejs/fast:
 	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir/build.make jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir/build
 .PHONY : jog_ur3_gennodejs/fast
+
+src/UR3_Xbox.o: src/UR3_Xbox.cpp.o
+
+.PHONY : src/UR3_Xbox.o
+
+# target to build an object file
+src/UR3_Xbox.cpp.o:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build.make jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o
+.PHONY : src/UR3_Xbox.cpp.o
+
+src/UR3_Xbox.i: src/UR3_Xbox.cpp.i
+
+.PHONY : src/UR3_Xbox.i
+
+# target to preprocess a source file
+src/UR3_Xbox.cpp.i:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build.make jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.i
+.PHONY : src/UR3_Xbox.cpp.i
+
+src/UR3_Xbox.s: src/UR3_Xbox.cpp.s
+
+.PHONY : src/UR3_Xbox.s
+
+# target to generate assembly for a file
+src/UR3_Xbox.cpp.s:
+	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/build.make jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.s
+.PHONY : src/UR3_Xbox.cpp.s
 
 src/jog_arm_server.o: src/jog_arm_server.cpp.o
 
@@ -444,33 +471,6 @@ src/xbox_to_twist.cpp.s:
 	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist.dir/src/xbox_to_twist.cpp.s
 .PHONY : src/xbox_to_twist.cpp.s
 
-src/xbox_to_twist_test.o: src/xbox_to_twist_test.cpp.o
-
-.PHONY : src/xbox_to_twist_test.o
-
-# target to build an object file
-src/xbox_to_twist_test.cpp.o:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/src/xbox_to_twist_test.cpp.o
-.PHONY : src/xbox_to_twist_test.cpp.o
-
-src/xbox_to_twist_test.i: src/xbox_to_twist_test.cpp.i
-
-.PHONY : src/xbox_to_twist_test.i
-
-# target to preprocess a source file
-src/xbox_to_twist_test.cpp.i:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/src/xbox_to_twist_test.cpp.i
-.PHONY : src/xbox_to_twist_test.cpp.i
-
-src/xbox_to_twist_test.s: src/xbox_to_twist_test.cpp.s
-
-.PHONY : src/xbox_to_twist_test.s
-
-# target to generate assembly for a file
-src/xbox_to_twist_test.cpp.s:
-	cd /home/haoran/US_UR3/build && $(MAKE) -f jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/build.make jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir/src/xbox_to_twist_test.cpp.s
-.PHONY : src/xbox_to_twist_test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -483,7 +483,6 @@ help:
 	@echo "... install"
 	@echo "... xbox_to_twist"
 	@echo "... jog_arm_server"
-	@echo "... xbox_to_twist_test"
 	@echo "... jog_ur3_genpy"
 	@echo "... jog_ur3_generate_messages_py"
 	@echo "... jog_ur3_gencpp"
@@ -498,16 +497,17 @@ help:
 	@echo "... jog_ur3_generate_messages_lisp"
 	@echo "... jog_ur3_genlisp"
 	@echo "... jog_ur3_generate_messages_nodejs"
+	@echo "... UR3_Xbox"
 	@echo "... jog_ur3_gennodejs"
+	@echo "... src/UR3_Xbox.o"
+	@echo "... src/UR3_Xbox.i"
+	@echo "... src/UR3_Xbox.s"
 	@echo "... src/jog_arm_server.o"
 	@echo "... src/jog_arm_server.i"
 	@echo "... src/jog_arm_server.s"
 	@echo "... src/xbox_to_twist.o"
 	@echo "... src/xbox_to_twist.i"
 	@echo "... src/xbox_to_twist.s"
-	@echo "... src/xbox_to_twist_test.o"
-	@echo "... src/xbox_to_twist_test.i"
-	@echo "... src/xbox_to_twist_test.s"
 .PHONY : help
 
 

@@ -343,7 +343,6 @@
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/install.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_arm_server.dir
-/home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/xbox_to_twist_test.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_genpy.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_generate_messages_py.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gencpp.dir
@@ -358,6 +357,7 @@
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_generate_messages_lisp.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_genlisp.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_generate_messages_nodejs.dir
+/home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir
 /home/haoran/US_UR3/build/jog_ur3/jog_ur3/CMakeFiles/jog_ur3_gennodejs.dir
 /home/haoran/US_UR3/build/universal_robot/ur10_e_moveit_config/CMakeFiles/install.dir
 /home/haoran/US_UR3/build/universal_robot/ur10_e_moveit_config/CMakeFiles/rebuild_cache.dir

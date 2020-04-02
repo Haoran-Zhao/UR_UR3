@@ -42,11 +42,11 @@ add_executable(xbox_to_twist src/xbox_to_twist.cpp)
 add_dependencies(xbox_to_twist ${catkin_EXPORTED_TARGETS})
 target_link_libraries(xbox_to_twist ${catkin_LIBRARIES} ${Eigen_LIBRARIES})
 
-add_executable(xbox_to_twist_test src/xbox_to_twist_test.cpp)
-add_dependencies(xbox_to_twist_test ${catkin_EXPORTED_TARGETS})
-target_link_libraries(xbox_to_twist_test ${catkin_LIBRARIES} ${Eigen_LIBRARIES})
+add_executable(UR3_Xbox src/UR3_Xbox.cpp)
+add_dependencies(UR3_Xbox ${catkin_EXPORTED_TARGETS})
+target_link_libraries(UR3_Xbox ${catkin_LIBRARIES} ${Eigen_LIBRARIES})
 
-install(TARGETS jog_arm_server xbox_to_twist xbox_to_twist_test
+install(TARGETS jog_arm_server xbox_to_twist UR3_Xbox
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

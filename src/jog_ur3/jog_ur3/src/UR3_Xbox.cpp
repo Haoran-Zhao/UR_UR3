@@ -2,15 +2,17 @@
 #include "jog_msgs/JogJoint.h"
 #include "ros/ros.h"
 #include "sensor_msgs/Joy.h"
+#include "geometry_msgs/Twist.h"
 
 namespace to_twist
 {
-class xboxToTwist
+class UR3Xbox
 {
 public:
-  xboxToTwist() : spinner_(1)
+  UR3Xbox() : spinner_(1)
   {
-    joy_sub_ = n_.subscribe("joy", 1, &xboxToTwist::joyCallback, this);
+    joy_sub_ = n_.subscribe("joy", 1, &UR3Xbox::joyCallback, this);
+    mat_sub_ = n_.subscribe("goal_pos",1, &UR3Xbox::matCallback, this);
     twist_pub_ = n_.advertise<geometry_msgs::TwistStamped>("jog_arm_server/delta_jog_cmds", 1);
     joint_delta_pub_ = n_.advertise<jog_msgs::JogJoint>("jog_arm_server/joint_delta_jog_cmds", 1);
 
@@ -20,7 +22,7 @@ public:
 
 private:
   ros::NodeHandle n_;
-  ros::Subscriber joy_sub_;
+  ros::Subscriber joy_sub_, mat_sub_;
   ros::Publisher twist_pub_, joint_delta_pub_;
   ros::AsyncSpinner spinner_;
 
@@ -47,26 +49,28 @@ private:
     // Button 6: positive
     // Button 7: negative
     joint_deltas.deltas.push_back(msg->buttons[6] - msg->buttons[7]);
-
-    //initial the joint pose
-    if (msg->buttons[2] ==1){
-      joint_deltas.joint_names.push_back("shoulder_pan_joint");
-      joint_deltas.deltas.push_back(0);
-      joint_deltas.joint_names.push_back("shoulder_lift_joint");
-      joint_deltas.deltas.push_back(-1.0996);
-      joint_deltas.joint_names.push_back("elbow_joint");
-      joint_deltas.deltas.push_back(1.9199);
-      joint_deltas.joint_names.push_back("wrist_1_joint");
-      joint_deltas.deltas.push_back(-0.7858);
-      joint_deltas.joint_names.push_back("wrist_2_joint");
-      joint_deltas.deltas.push_back(1.57079);
-      joint_deltas.joint_names.push_back("wrist_3_joint");
-      joint_deltas.deltas.push_back(1.7639);
-      joint_deltas.header.stamp = ros::Time::now();
-    };
     joint_deltas.header.stamp = ros::Time::now();
+
     twist_pub_.publish(twist);
     joint_delta_pub_.publish(joint_deltas);
+  }
+
+  void matCallback(const geometry_msgs::Twist::ConstPtr& msg)
+  {
+    // Cartesian jogging
+    geometry_msgs::TwistStamped twist;
+    twist.header.stamp = ros::Time::now();
+    // This button is binary
+    twist.twist.linear.x = msg->linear.x;
+    // Double buttons
+    twist.twist.linear.y = msg->linear.y;
+    twist.twist.linear.z = msg->linear.z;
+    twist.twist.angular.x = -msg->angular.x;
+    twist.twist.angular.y = msg->angular.y;
+    // A binary button
+    twist.twist.angular.z = -msg->angular.z;
+
+    twist_pub_.publish(twist);
   }
 };
 }  // end to_twist namespace
@@ -75,7 +79,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "xbox_to_twist");
 
-  to_twist::xboxToTwist to_twist;
+  to_twist::UR3Xbox to_twist;
 
   return 0;
 }
