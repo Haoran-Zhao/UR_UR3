@@ -9,6 +9,7 @@ import moveit_msgs.msg
 from trajectory_msgs.msg import JointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from time import sleep
+from geometry_msgs.msg import Point
 from sensor_msgs.msg import Joy
 
 class initial_pub_pos:
@@ -16,6 +17,8 @@ class initial_pub_pos:
         rospy.init_node('initial_pub_pos', anonymous = True)
         rospy.loginfo("Strating node initial_pub_pos")
         self.joy_sub = rospy.Subscriber('joy', Joy, self.call_back, queue_size = 1)
+        self.cur_pos_pub = rospy.Publisher('cur_pos', Point, queue_size=1)
+
         rospy.on_shutdown(self.cleanup)
 
         # Initialize the move_group API
@@ -146,7 +149,13 @@ class initial_pub_pos:
                 rospy.loginfo("Warnig: target position overlaps with the initial position!")
             else:
                 self.cartesian_execut(self.waypoints)
-
+        # pulish end-effector position
+        cur_pose = self.arm.get_current_pose(self.end_effector_link).pose
+        self.point = Point()
+        self.point.x = cur_pose.position.x
+        self.point.y = cur_pose.position.y
+        self.point.z = cur_pose.position.z
+        self.cur_pos_pub.publish(self.point)
 
 if __name__ == "__main__":
     try:
