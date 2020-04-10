@@ -64,6 +64,7 @@ jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/inc
 jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
 jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/include/sensor_msgs/Joy.h
 jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
+jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/include/std_msgs/Int32.h
 jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 jog_ur3/jog_ur3/CMakeFiles/UR3_Xbox.dir/src/UR3_Xbox.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 

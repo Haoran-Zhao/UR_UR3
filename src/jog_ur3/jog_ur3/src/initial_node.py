@@ -11,13 +11,14 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from time import sleep
 from geometry_msgs.msg import Point
 from sensor_msgs.msg import Joy
+from std_msgs.msg import Bool
 
 class initial_pub_pos:
     def __init__(self):
         rospy.init_node('initial_pub_pos', anonymous = True)
         rospy.loginfo("Strating node initial_pub_pos")
         self.joy_sub = rospy.Subscriber('joy', Joy, self.call_back, queue_size = 1)
-        # self.cur_pos_pub = rospy.Publisher('cur_pos', Point, queue_size=1)
+        self.init_pub = rospy.Publisher('init_flg', Bool, queue_size=1 )
 
         rospy.on_shutdown(self.cleanup)
 
@@ -68,6 +69,11 @@ class initial_pub_pos:
         plan = self.arm.plan()
         self.arm.execute(plan)
 
+
+        self.init_pos = Bool()
+        self.init_pos.data = False
+        self.init_pub.publish(self.init_pos)
+
     def cartesian_execut(self, waypoints):
         plan, fraction = self.arm.compute_cartesian_path(waypoints, 0.01, 0.0, True)
         # If we have a complete plan, execute the trajectory
@@ -98,8 +104,16 @@ class initial_pub_pos:
 
         self.execute()
 
+        if self.init_position or self.init_joint:
+            self.initial = True
+        else:
+            self.initial = False
+        self.init_pos.data = self.initial
+        self.init_pub.publish(self.init_pos)
+
         self.init_position = False
         self.init_joint = False
+
 
     def execute(self):
         if self.init_joint:
@@ -149,13 +163,6 @@ class initial_pub_pos:
                 rospy.loginfo("Warnig: target position overlaps with the initial position!")
             else:
                 self.cartesian_execut(self.waypoints)
-        # # pulish end-effector position
-        # cur_pose = self.arm.get_current_pose(self.end_effector_link).pose
-        # self.point = Point()
-        # self.point.x = cur_pose.position.x
-        # self.point.y = cur_pose.position.y
-        # self.point.z = cur_pose.position.z
-        # self.cur_pos_pub.publish(self.point)
 
 if __name__ == "__main__":
     try:

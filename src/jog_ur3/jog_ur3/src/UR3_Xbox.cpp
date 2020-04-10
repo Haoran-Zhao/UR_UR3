@@ -3,6 +3,7 @@
 #include "ros/ros.h"
 #include "sensor_msgs/Joy.h"
 #include "geometry_msgs/Twist.h"
+#include "std_msgs/Int32.h"
 
 namespace to_twist
 {
@@ -13,6 +14,7 @@ public:
   {
     joy_sub_ = n_.subscribe("joy", 1, &UR3Xbox::joyCallback, this);
     mat_sub_ = n_.subscribe("goal_pos",1, &UR3Xbox::matCallback, this);
+    track_pub_ = n_.advertise<std_msgs::Int32>("track_flag", 1);
     twist_pub_ = n_.advertise<geometry_msgs::TwistStamped>("jog_arm_server/delta_jog_cmds", 1);
     joint_delta_pub_ = n_.advertise<jog_msgs::JogJoint>("jog_arm_server/joint_delta_jog_cmds", 1);
 
@@ -23,7 +25,7 @@ public:
 private:
   ros::NodeHandle n_;
   ros::Subscriber joy_sub_, mat_sub_;
-  ros::Publisher twist_pub_, joint_delta_pub_;
+  ros::Publisher twist_pub_, joint_delta_pub_, track_pub_;
   ros::AsyncSpinner spinner_;
 
   // Convert incoming joy commands to TwistStamped commands for jogging
@@ -53,6 +55,11 @@ private:
 
     twist_pub_.publish(twist);
     joint_delta_pub_.publish(joint_deltas);
+
+    std_msgs::Int32 track_flag;
+    track_flag.data = msg->axes[2] - msg->axes[5];
+    track_pub_.publish(track_flag);
+
   }
 
   void matCallback(const geometry_msgs::Twist::ConstPtr& msg)
