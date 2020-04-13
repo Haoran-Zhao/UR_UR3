@@ -59,7 +59,12 @@ If there is a problem with jog_msgs:
 1. Remove the jog_controller folder, and catkin_make.
 2. paste the jog_controller folder back, and catkin_make.
 
-#### 4. Image Processing
+#### 4. Hardware Implementation
+##### 4.1 jog_arm controller issues toubleshoot
+1. [`jogging with real UR3 #93`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues/93)
+2. [`ROS controller_manager`](http://wiki.ros.org/controller_manager)
+3. [`Velocity streaming #218`](https://github.com/ros-industrial/ur_modern_driver/issues/218)
+4. [`Adding JointGroupVelocityControllers #224`](https://github.com/rosindustrial/ur_modern_driver/pull/224/commits/e0032825cf1acaf5c81738f835eaf85410bdee84)
 
 #### 5. ROS-Arduino
 ##### 5.1
