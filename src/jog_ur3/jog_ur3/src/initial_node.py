@@ -44,8 +44,8 @@ class initial_pub_pos:
         self.arm.set_goal_position_tolerance(0.01)
         self.arm.set_goal_orientation_tolerance(0.1)
         self.arm.set_planning_time(0.1)
-        self.arm.set_max_acceleration_scaling_factor(.1)
-        self.arm.set_max_velocity_scaling_factor(.3)
+        self.arm.set_max_acceleration_scaling_factor(.05)
+        self.arm.set_max_velocity_scaling_factor(.2)
 
         self.default_joint_states = self.arm.get_current_joint_values()
         # self.default_joint_states[0] = -1.57691
