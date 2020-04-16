@@ -66,6 +66,8 @@ If there is a problem with jog_msgs:
 3. [`Velocity streaming #218`](https://github.com/ros-industrial/ur_modern_driver/issues/218)
 4. [`Adding JointGroupVelocityControllers #224`](https://github.com/rosindustrial/ur_modern_driver/pull/224/commits/e0032825cf1acaf5c81738f835eaf85410bdee84)
 
+Can not jog arm with `joint_group_vel_controller`, but can make it work with following [`solution`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues/94#issuecomment-497584452), which pulish the joint velocity to `joint_speed` topic.
+5. [`Connecting jog_arm to real UR3`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues/94)
 #### 5. ROS-Arduino
 ##### 5.1
 [`official tutorial`](http://wiki.ros.org/rosserial_arduino/Tutorials)
