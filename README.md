@@ -69,6 +69,21 @@ If there is a problem with jog_msgs:
 Can not jog arm with `joint_group_vel_controller`, but can make it work with following [`solution`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues/94#issuecomment-497584452), which pulish the joint velocity to `joint_speed` topic.
 
 5. [`Connecting jog_arm to real UR3`](https://github.com/UTNuclearRoboticsPublic/jog_arm/issues/94)
+
+##### 4.2 jog ur3 with Xbox 360 wired controller
+![Screenshot from 2020-04-15 20-46-05](https://user-images.githubusercontent.com/16868368/79405908-44b9cc00-7f5b-11ea-88c4-2ea957eb76ac.png)
+
+change the `<arg name="robot_ip" default="xxx.xxx.x.x"/>` in `src/jog_ur3/jog_ur3/launch/hardware_standard_init.launch`
+
+```
+cd ~/ws
+source devel/setup.bash
+catkin_make
+roslaunch jog_ur3 ur3_hardware.launch
+```
+
+change linear speed in [`ur3_test.yaml`](https://github.com/Haoran-Zhao/US_UR3/blob/master/src/jog_ur3/jog_ur3/config/ur3_test.yaml)
+
 #### 5. ROS-Arduino
 ##### 5.1
 [`official tutorial`](http://wiki.ros.org/rosserial_arduino/Tutorials)
