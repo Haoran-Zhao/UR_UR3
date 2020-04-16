@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/haoran/US_UR3/devel_isolated/moveit_commander/setup.sh

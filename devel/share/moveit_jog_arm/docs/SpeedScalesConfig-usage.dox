@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="moveit_jog_arm" pkg="moveit_jog_arm" type="moveit_jog_arm">
+  <param name="speed_scaling_factor" type="double" value="0.5" />
+</node>
+\endverbatim
+

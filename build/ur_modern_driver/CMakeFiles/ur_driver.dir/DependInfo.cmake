@@ -26,6 +26,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/haoran/US_UR3/src/ur_modern_driver/include"
   "/home/haoran/US_UR3/devel/include"
+  "/home/haoran/US_UR3/src/ros_controllers/ros_control/hardware_interface/include"
+  "/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_manager/include"
+  "/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_interface/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
@@ -33,6 +36,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/haoran/US_UR3/build/ur_modern_driver/CMakeFiles/ur_hardware_interface.dir/DependInfo.cmake"
+  "/home/haoran/US_UR3/build/ros_controllers/ros_control/controller_manager/CMakeFiles/controller_manager.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

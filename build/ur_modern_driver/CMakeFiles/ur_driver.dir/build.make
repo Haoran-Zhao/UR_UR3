@@ -247,7 +247,7 @@ ur_driver_EXTERNAL_OBJECTS =
 /home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: ur_modern_driver/CMakeFiles/ur_driver.dir/src/do_output.cpp.o
 /home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: ur_modern_driver/CMakeFiles/ur_driver.dir/build.make
 /home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: /home/haoran/US_UR3/devel/lib/libur_hardware_interface.so
-/home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: /opt/ros/kinetic/lib/libcontroller_manager.so
+/home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: /home/haoran/US_UR3/devel/lib/libcontroller_manager.so
 /home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
 /home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: /opt/ros/kinetic/lib/libclass_loader.so
 /home/haoran/US_UR3/devel/lib/ur_modern_driver/ur_driver: /usr/lib/libPocoFoundation.so

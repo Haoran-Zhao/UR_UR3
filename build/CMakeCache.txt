@@ -284,6 +284,9 @@ Matlab_gazebo_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/Matlab_gazebo
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
 //Path to a program.
+PYTESTS:FILEPATH=/usr/bin/py.test-2.7
+
+//Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
 
 //Specify specific Python version to use ('major.minor' or 'major')
@@ -313,6 +316,12 @@ SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 //Name of the computer/site where compile is being run
 SITE:STRING=haoran
 
+//Path to a file.
+TinyXML_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+TinyXML_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libtinyxml.so
+
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
 
@@ -320,7 +329,7 @@ UBUNTU:BOOL=TRUE
 UBUNTU_XENIAL:BOOL=TRUE
 
 //Path to a file.
-_file_name:FILEPATH=/home/haoran/US_UR3/src/jog_control/jog_launch/test/tra1_jog.test
+_file_name:FILEPATH=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/joint_trajectory_controller/test/joint_trajectory_controller_wrapping.test
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
@@ -334,11 +343,26 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//Path to a file.
+_path_name:FILEPATH=/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_manager_tests/test
+
+//Value Computed by CMake
+ackermann_steering_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/ackermann_steering_controller
+
+//Dependencies for the target
+ackermann_steering_controller_LIB_DEPENDS:STATIC=general;diff_drive_controller;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;
+
+//Value Computed by CMake
+ackermann_steering_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/ackermann_steering_controller
+
 //The directory containing a CMake configuration file for actionlib.
 actionlib_DIR:PATH=/opt/ros/kinetic/share/actionlib/cmake
 
 //The directory containing a CMake configuration file for actionlib_msgs.
 actionlib_msgs_DIR:PATH=/opt/ros/kinetic/share/actionlib_msgs/cmake
+
+//The directory containing a CMake configuration file for angles.
+angles_DIR:PATH=/opt/ros/kinetic/share/angles/cmake
 
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
@@ -349,23 +373,122 @@ chomp_motion_planner_DIR:PATH=/opt/ros/kinetic/share/chomp_motion_planner/cmake
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/kinetic/share/class_loader/cmake
 
+//The directory containing a CMake configuration file for cmake_modules.
+cmake_modules_DIR:PATH=/opt/ros/kinetic/share/cmake_modules/cmake
+
+//Value Computed by CMake
+combined_robot_hw_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/combined_robot_hw
+
+//The directory containing a CMake configuration file for combined_robot_hw.
+combined_robot_hw_DIR:PATH=/home/haoran/US_UR3/devel/share/combined_robot_hw/cmake
+
+//Dependencies for the target
+combined_robot_hw_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+combined_robot_hw_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/combined_robot_hw
+
+//Value Computed by CMake
+combined_robot_hw_tests_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/combined_robot_hw_tests
+
+//Dependencies for the target
+combined_robot_hw_tests_LIB_DEPENDS:STATIC=general;combined_robot_hw;general;controller_manager_tests;general;controller_manager;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+combined_robot_hw_tests_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/combined_robot_hw_tests
+
+//The directory containing a CMake configuration file for console_bridge.
+console_bridge_DIR:PATH=/usr/lib/x86_64-linux-gnu/console_bridge/cmake
+
+//Value Computed by CMake
+control_msgs_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/control_msgs/control_msgs
+
 //The directory containing a CMake configuration file for control_msgs.
-control_msgs_DIR:PATH=/opt/ros/kinetic/share/control_msgs/cmake
+control_msgs_DIR:PATH=/home/haoran/US_UR3/devel/share/control_msgs/cmake
+
+//Value Computed by CMake
+control_msgs_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/control_msgs/control_msgs
+
+//Value Computed by CMake
+control_toolbox_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/control_toolbox
+
+//The directory containing a CMake configuration file for control_toolbox.
+control_toolbox_DIR:PATH=/home/haoran/US_UR3/devel/share/control_toolbox/cmake
+
+//Dependencies for the target
+control_toolbox_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;
+
+//Value Computed by CMake
+control_toolbox_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/control_toolbox
+
+//Value Computed by CMake
+controller_interface_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/controller_interface
 
 //The directory containing a CMake configuration file for controller_interface.
-controller_interface_DIR:PATH=/opt/ros/kinetic/share/controller_interface/cmake
+controller_interface_DIR:PATH=/home/haoran/US_UR3/devel/share/controller_interface/cmake
+
+//Value Computed by CMake
+controller_interface_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_interface
+
+//Value Computed by CMake
+controller_manager_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/controller_manager
 
 //The directory containing a CMake configuration file for controller_manager.
-controller_manager_DIR:PATH=/opt/ros/kinetic/share/controller_manager/cmake
+controller_manager_DIR:PATH=/home/haoran/US_UR3/devel/share/controller_manager/cmake
+
+//Dependencies for the target
+controller_manager_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;
+
+//Value Computed by CMake
+controller_manager_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_manager
+
+//Value Computed by CMake
+controller_manager_msgs_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/controller_manager_msgs
 
 //The directory containing a CMake configuration file for controller_manager_msgs.
-controller_manager_msgs_DIR:PATH=/opt/ros/kinetic/share/controller_manager_msgs/cmake
+controller_manager_msgs_DIR:PATH=/home/haoran/US_UR3/devel/share/controller_manager_msgs/cmake
+
+//Value Computed by CMake
+controller_manager_msgs_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_manager_msgs
+
+//Value Computed by CMake
+controller_manager_tests_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/controller_manager_tests
+
+//The directory containing a CMake configuration file for controller_manager_tests.
+controller_manager_tests_DIR:PATH=/home/haoran/US_UR3/devel/share/controller_manager_tests/cmake
+
+//Dependencies for the target
+controller_manager_tests_LIB_DEPENDS:STATIC=general;controller_manager;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;
+
+//Value Computed by CMake
+controller_manager_tests_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/controller_manager_tests
 
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
+//Value Computed by CMake
+diff_drive_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/diff_drive_controller
+
+//The directory containing a CMake configuration file for diff_drive_controller.
+diff_drive_controller_DIR:PATH=/home/haoran/US_UR3/devel/share/diff_drive_controller/cmake
+
+//Dependencies for the target
+diff_drive_controller_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+diff_drive_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/diff_drive_controller
+
 //The directory containing a CMake configuration file for dynamic_reconfigure.
 dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
+
+//Value Computed by CMake
+effort_controllers_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/effort_controllers
+
+//Dependencies for the target
+effort_controllers_LIB_DEPENDS:STATIC=general;control_toolbox;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;realtime_tools;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+effort_controllers_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/effort_controllers
 
 //The directory containing a CMake configuration file for eigen_conversions.
 eigen_conversions_DIR:PATH=/opt/ros/kinetic/share/eigen_conversions/cmake
@@ -397,8 +520,41 @@ fake_joint_launch_DIR:PATH=/home/haoran/US_UR3/devel/share/fake_joint_launch/cma
 //Value Computed by CMake
 fake_joint_launch_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/fake_joint/fake_joint_launch
 
+//Value Computed by CMake
+force_torque_sensor_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/force_torque_sensor_controller
+
+//Dependencies for the target
+force_torque_sensor_controller_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+force_torque_sensor_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/force_torque_sensor_controller
+
+//Value Computed by CMake
+forward_command_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/forward_command_controller
+
+//The directory containing a CMake configuration file for forward_command_controller.
+forward_command_controller_DIR:PATH=/home/haoran/US_UR3/devel/share/forward_command_controller/cmake
+
+//Value Computed by CMake
+forward_command_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/forward_command_controller
+
+//Value Computed by CMake
+four_wheel_steering_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/four_wheel_steering_controller
+
+//Dependencies for the target
+four_wheel_steering_controller_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/liburdf_geometry_parser.so;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+four_wheel_steering_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/four_wheel_steering_controller
+
+//The directory containing a CMake configuration file for four_wheel_steering_msgs.
+four_wheel_steering_msgs_DIR:PATH=/opt/ros/kinetic/share/four_wheel_steering_msgs/cmake
+
 //The directory containing a CMake configuration file for gazebo_msgs.
 gazebo_msgs_DIR:PATH=/opt/ros/kinetic/share/gazebo_msgs/cmake
+
+//The directory containing a CMake configuration file for gazebo_ros.
+gazebo_ros_DIR:PATH=/opt/ros/kinetic/share/gazebo_ros/cmake
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/kinetic/share/gencpp/cmake
@@ -443,6 +599,15 @@ gmock_main_LIB_DEPENDS:STATIC=general;-lpthread;
 graph_msgs_DIR:PATH=/opt/ros/kinetic/share/graph_msgs/cmake
 
 //Value Computed by CMake
+gripper_action_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/gripper_action_controller
+
+//Dependencies for the target
+gripper_action_controller_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libactionlib.so;general;controller_manager;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;control_toolbox;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;realtime_tools;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+gripper_action_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/gripper_action_controller
+
+//Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/gtest/gtest
 
 //Dependencies for the target
@@ -467,11 +632,26 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//Value Computed by CMake
+hardware_interface_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/hardware_interface
+
 //The directory containing a CMake configuration file for hardware_interface.
-hardware_interface_DIR:PATH=/opt/ros/kinetic/share/hardware_interface/cmake
+hardware_interface_DIR:PATH=/home/haoran/US_UR3/devel/share/hardware_interface/cmake
+
+//Value Computed by CMake
+hardware_interface_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/hardware_interface
 
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/kinetic/share/image_transport/cmake
+
+//Value Computed by CMake
+imu_sensor_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/imu_sensor_controller
+
+//Dependencies for the target
+imu_sensor_controller_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+imu_sensor_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/imu_sensor_controller
 
 //The directory containing a CMake configuration file for industrial_msgs.
 industrial_msgs_DIR:PATH=industrial_msgs_DIR-NOTFOUND
@@ -484,6 +664,9 @@ jog_arm_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_arm
 
 //Value Computed by CMake
 jog_arm_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_arm
+
+//Dependencies for the target
+jog_arm_cpp_api_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libmoveit_common_planning_interface_objects.so;general;/opt/ros/kinetic/lib/libmoveit_planning_scene_interface.so;general;/opt/ros/kinetic/lib/libmoveit_move_group_interface.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmoveit_warehouse.so;general;/opt/ros/kinetic/lib/libwarehouse_ros.so;general;/opt/ros/kinetic/lib/libmoveit_pick_place_planner.so;general;/opt/ros/kinetic/lib/libmoveit_move_group_capabilities_base.so;general;/opt/ros/kinetic/lib/libmoveit_rdf_loader.so;general;/opt/ros/kinetic/lib/libmoveit_kinematics_plugin_loader.so;general;/opt/ros/kinetic/lib/libmoveit_robot_model_loader.so;general;/opt/ros/kinetic/lib/libmoveit_constraint_sampler_manager_loader.so;general;/opt/ros/kinetic/lib/libmoveit_planning_pipeline.so;general;/opt/ros/kinetic/lib/libmoveit_trajectory_execution_manager.so;general;/opt/ros/kinetic/lib/libmoveit_plan_execution.so;general;/opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so;general;/opt/ros/kinetic/lib/libmoveit_collision_plugin_loader.so;general;/opt/ros/kinetic/lib/libchomp_motion_planner.so;general;/opt/ros/kinetic/lib/libmoveit_lazy_free_space_updater.so;general;/opt/ros/kinetic/lib/libmoveit_point_containment_filter.so;general;/opt/ros/kinetic/lib/libmoveit_occupancy_map_monitor.so;general;/opt/ros/kinetic/lib/libmoveit_pointcloud_octomap_updater_core.so;general;/opt/ros/kinetic/lib/libmoveit_semantic_world.so;general;/opt/ros/kinetic/lib/libmoveit_exceptions.so;general;/opt/ros/kinetic/lib/libmoveit_background_processing.so;general;/opt/ros/kinetic/lib/libmoveit_kinematics_base.so;general;/opt/ros/kinetic/lib/libmoveit_robot_model.so;general;/opt/ros/kinetic/lib/libmoveit_transforms.so;general;/opt/ros/kinetic/lib/libmoveit_robot_state.so;general;/opt/ros/kinetic/lib/libmoveit_robot_trajectory.so;general;/opt/ros/kinetic/lib/libmoveit_planning_interface.so;general;/opt/ros/kinetic/lib/libmoveit_collision_detection.so;general;/opt/ros/kinetic/lib/libmoveit_collision_detection_fcl.so;general;/opt/ros/kinetic/lib/libmoveit_kinematic_constraints.so;general;/opt/ros/kinetic/lib/libmoveit_planning_scene.so;general;/opt/ros/kinetic/lib/libmoveit_constraint_samplers.so;general;/opt/ros/kinetic/lib/libmoveit_planning_request_adapter.so;general;/opt/ros/kinetic/lib/libmoveit_profiler.so;general;/opt/ros/kinetic/lib/libmoveit_trajectory_processing.so;general;/opt/ros/kinetic/lib/libmoveit_distance_field.so;general;/opt/ros/kinetic/lib/libmoveit_collision_distance_field.so;general;/opt/ros/kinetic/lib/libmoveit_kinematics_metrics.so;general;/opt/ros/kinetic/lib/libmoveit_dynamics_solver.so;general;/opt/ros/kinetic/lib/libmoveit_utils.so;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;general;/usr/lib/x86_64-linux-gnu/libfcl.so;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/libgeometric_shapes.so;general;/opt/ros/kinetic/lib/liboctomap.so;general;/opt/ros/kinetic/lib/liboctomath.so;general;/opt/ros/kinetic/lib/libkdl_parser.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.2;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/librandom_numbers.so;general;/opt/ros/kinetic/lib/libsrdfdom.so;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosparam_shortcuts.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
 jog_control_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_control/jog_control
@@ -524,6 +707,30 @@ jog_ur3_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/jog_ur3/jog_ur3
 //Value Computed by CMake
 jog_ur3_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/jog_ur3/jog_ur3
 
+//Value Computed by CMake
+joint_limits_interface_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/joint_limits_interface
+
+//Value Computed by CMake
+joint_limits_interface_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/joint_limits_interface
+
+//Value Computed by CMake
+joint_state_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/joint_state_controller
+
+//Dependencies for the target
+joint_state_controller_LIB_DEPENDS:STATIC=general;realtime_tools;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+joint_state_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/joint_state_controller
+
+//Value Computed by CMake
+joint_trajectory_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/joint_trajectory_controller
+
+//Dependencies for the target
+joint_trajectory_controller_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;control_toolbox;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+joint_trajectory_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/joint_trajectory_controller
+
 //The directory containing a CMake configuration file for kdl_conversions.
 kdl_conversions_DIR:PATH=/opt/ros/kinetic/share/kdl_conversions/cmake
 
@@ -534,7 +741,7 @@ kdl_parser_DIR:PATH=/opt/ros/kinetic/share/kdl_parser/cmake
 laser_geometry_DIR:PATH=/opt/ros/kinetic/share/laser_geometry/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/kinetic/lib/libtf2.so
+lib:FILEPATH=/opt/ros/kinetic/lib/librospack.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/kinetic/share/map_msgs/cmake
@@ -599,6 +806,9 @@ object_recognition_msgs_DIR:PATH=/opt/ros/kinetic/share/object_recognition_msgs/
 //The directory containing a CMake configuration file for octomap_msgs.
 octomap_msgs_DIR:PATH=/opt/ros/kinetic/share/octomap_msgs/cmake
 
+//Path to a library.
+onelib:FILEPATH=/usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+
 //Value Computed by CMake
 package_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/simulation_ur3
 
@@ -608,11 +818,47 @@ package_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/simulation_ur3
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/kinetic/share/pluginlib/cmake
 
+//Value Computed by CMake
+position_controllers_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/position_controllers
+
+//Dependencies for the target
+position_controllers_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;realtime_tools;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+position_controllers_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/position_controllers
+
 //The directory containing a CMake configuration file for random_numbers.
 random_numbers_DIR:PATH=/opt/ros/kinetic/share/random_numbers/cmake
 
+//Value Computed by CMake
+realtime_tools_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/realtime_tools
+
+//The directory containing a CMake configuration file for realtime_tools.
+realtime_tools_DIR:PATH=/home/haoran/US_UR3/devel/share/realtime_tools/cmake
+
+//Dependencies for the target
+realtime_tools_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;
+
+//Value Computed by CMake
+realtime_tools_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/realtime_tools
+
 //The directory containing a CMake configuration file for resource_retriever.
 resource_retriever_DIR:PATH=/opt/ros/kinetic/share/resource_retriever/cmake
+
+//Value Computed by CMake
+ros_control_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/ros_control
+
+//Value Computed by CMake
+ros_control_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/ros_control
+
+//Value Computed by CMake
+ros_controllers_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/ros_controllers
+
+//Value Computed by CMake
+ros_controllers_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/ros_controllers
+
+//The directory containing a CMake configuration file for ros_pytest.
+ros_pytest_DIR:PATH=/opt/ros/kinetic/share/ros_pytest/cmake
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
@@ -658,6 +904,21 @@ rostest_DIR:PATH=/opt/ros/kinetic/share/rostest/cmake
 
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
+
+//The directory containing a CMake configuration file for rosunit.
+rosunit_DIR:PATH=/opt/ros/kinetic/share/rosunit/cmake
+
+//Value Computed by CMake
+rqt_controller_manager_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/rqt_controller_manager
+
+//Value Computed by CMake
+rqt_controller_manager_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/rqt_controller_manager
+
+//Value Computed by CMake
+rqt_joint_trajectory_controller_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/rqt_joint_trajectory_controller
+
+//Value Computed by CMake
+rqt_joint_trajectory_controller_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/rqt_joint_trajectory_controller
 
 //The directory containing a CMake configuration file for rviz.
 rviz_DIR:PATH=/opt/ros/kinetic/share/rviz/cmake
@@ -706,6 +967,21 @@ tf_conversions_DIR:PATH=/opt/ros/kinetic/share/tf_conversions/cmake
 
 //The directory containing a CMake configuration file for trajectory_msgs.
 trajectory_msgs_DIR:PATH=/opt/ros/kinetic/share/trajectory_msgs/cmake
+
+//Value Computed by CMake
+transmission_interface_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_control/transmission_interface
+
+//Value Computed by CMake
+transmission_interface_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_control/transmission_interface
+
+//Dependencies for the target
+transmission_interface_loader_LIB_DEPENDS:STATIC=general;transmission_interface_parser;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;
+
+//Dependencies for the target
+transmission_interface_loader_plugins_LIB_DEPENDS:STATIC=general;transmission_interface_loader;
+
+//Dependencies for the target
+transmission_interface_parser_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;
 
 //Value Computed by CMake
 universal_robot_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/universal_robot/universal_robot
@@ -816,7 +1092,7 @@ ur_gazebo_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/universal_robot/ur_gazebo
 ur_gazebo_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/universal_robot/ur_gazebo
 
 //Dependencies for the target
-ur_hardware_interface_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcontroller_manager.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+ur_hardware_interface_LIB_DEPENDS:STATIC=general;controller_manager;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
 ur_kinematics_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/universal_robot/ur_kinematics
@@ -842,8 +1118,26 @@ ur_msgs_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/universal_robot/ur_msgs
 //The directory containing a CMake configuration file for urdf.
 urdf_DIR:PATH=/opt/ros/kinetic/share/urdf/cmake
 
+//The directory containing a CMake configuration file for urdf_geometry_parser.
+urdf_geometry_parser_DIR:PATH=/opt/ros/kinetic/share/urdf_geometry_parser/cmake
+
+//The directory containing a CMake configuration file for urdfdom.
+urdfdom_DIR:PATH=/usr/share/urdfdom/cmake
+
+//The directory containing a CMake configuration file for urdfdom_headers.
+urdfdom_headers_DIR:PATH=/usr/share/urdfdom_headers/cmake
+
 //The directory containing a CMake configuration file for urdfdom_py.
 urdfdom_py_DIR:PATH=/opt/ros/kinetic/share/urdfdom_py/cmake
+
+//Value Computed by CMake
+velocity_controllers_BINARY_DIR:STATIC=/home/haoran/US_UR3/build/ros_controllers/ros_controllers/velocity_controllers
+
+//Dependencies for the target
+velocity_controllers_LIB_DEPENDS:STATIC=general;control_toolbox;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;realtime_tools;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+velocity_controllers_SOURCE_DIR:STATIC=/home/haoran/US_UR3/src/ros_controllers/ros_controllers/velocity_controllers
 
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/kinetic/share/visualization_msgs/cmake
@@ -991,7 +1285,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=25
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=53
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1038,6 +1332,8 @@ COMPILER_SUPPORTS_CXX11:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.12()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding TinyXML
+FIND_PACKAGE_MESSAGE_DETAILS_TinyXML:INTERNAL=[/usr/lib/x86_64-linux-gnu/libtinyxml.so][/usr/include][v()]
 GMOCK_FROM_SOURCE_FOUND:INTERNAL=TRUE
 GMOCK_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
 GMOCK_FROM_SOURCE_LIBRARIES:INTERNAL=gmock
@@ -1064,6 +1360,10 @@ PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+//ADVANCED property for variable: TinyXML_INCLUDE_DIR
+TinyXML_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TinyXML_LIBRARY
+TinyXML_LIBRARY-ADVANCED:INTERNAL=1
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;filesystem;system;thread
 //Last used Boost_INCLUDE_DIR value.

@@ -1,0 +1,8 @@
+prefix=/home/haoran/US_UR3/devel
+
+Name: imu_sensor_controller
+Description: Description of imu_sensor_controller
+Version: 0.13.6
+Cflags: -I/home/haoran/US_UR3/src/ros_controllers/ros_controllers/imu_sensor_controller/include
+Libs: -L${prefix}/lib -limu_sensor_controller
+Requires: controller_interface hardware_interface pluginlib realtime_tools roscpp sensor_msgs

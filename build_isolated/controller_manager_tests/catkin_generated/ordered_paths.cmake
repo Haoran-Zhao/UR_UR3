@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/haoran/US_UR3/devel_isolated/controller_manager/lib;/opt/ros/kinetic/lib")

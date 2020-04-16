@@ -90,7 +90,7 @@ ur_hardware_interface_EXTERNAL_OBJECTS =
 
 /home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: ur_modern_driver/CMakeFiles/ur_hardware_interface.dir/src/ur_hardware_interface.cpp.o
 /home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: ur_modern_driver/CMakeFiles/ur_hardware_interface.dir/build.make
-/home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: /opt/ros/kinetic/lib/libcontroller_manager.so
+/home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: /home/haoran/US_UR3/devel/lib/libcontroller_manager.so
 /home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
 /home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: /opt/ros/kinetic/lib/libclass_loader.so
 /home/haoran/US_UR3/devel/lib/libur_hardware_interface.so: /usr/lib/libPocoFoundation.so

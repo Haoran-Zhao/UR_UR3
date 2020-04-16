@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o  -L/home/haoran/US_UR3/build_isolated/moveit_core/gtest/gtest/src -lpthread -Wl,-rpath,/home/haoran/US_UR3/build_isolated/moveit_core/gtest/gtest/src 
