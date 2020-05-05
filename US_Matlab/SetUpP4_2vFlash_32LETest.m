@@ -43,7 +43,8 @@ Trans.units = 'wavelengths'; % Explicit declaration avoids warning message when 
 Trans = computeTrans(Trans);
 Trans.maxHighVoltage = 50;  % set maximum high voltage limit for pulser supply.
 Trans = computeUTAMux64(Trans); % Add HVMux field for use with UTA 260-Mux
-mm2wl = Trans.frequency/(Resource.Parameters.speedOfSound/1000); %Trans.frequency/(Resource.Parameters.speedOfSound*1000)
+P.mm2wl = Trans.frequency/(Resource.Parameters.speedOfSound/1000);
+P.wl2mm = Resource.Parameters.speedOfSound/1000/Trans.frequency;
 
 P.theta = -pi/4;
 P.rayDelta = 2*(-P.theta);
@@ -54,6 +55,8 @@ P.radius = (P.aperture/2)/tan(-P.theta); % dist. to virt. apex
 PData(1).PDelta = [0.875, 0, 0.5]; %[Trans.spacing, 0, 0.5]
 PData(1).Size(1) = 10 + ceil((P.endDepth-P.startDepth)/PData(1).PDelta(3));
 PData(1).Size(2) = 10 + ceil(2*(P.endDepth + P.radius)*sin(-P.theta)/PData(1).PDelta(1));
+P.pxl2mm = (P.endDepth-P.startDepth)*P.wl2mm/ceil((P.endDepth-P.startDepth)/PData(1).PDelta(3)); %pixel size in [mm]
+
 PData(1).Size(3) = 1;
 PData(1).Origin = [-(PData(1).Size(2)/2)*PData(1).PDelta(1),0,P.startDepth];
 PData(1).Region = struct(...
@@ -65,36 +68,13 @@ PData(1).Region = struct(...
             'steer',0));
 PData(1).Region = computeRegions(PData(1));
 
-% Specify Media.  Use point targets in middle of PData(1).
+% Specify Media.
 % Set up Media points
-% - Uncomment for speckle
-% Media.MP = rand(40000,4);
-% Media.MP(:,2) = 0;
-% Media.MP(:,4) = 0.04*Media.MP(:,4) + 0.04;  % Random amplitude
-% Media.MP(:,1) = 2*halfwidth*(Media.MP(:,1)-0.5);
-% Media.MP(:,3) = P.acqDepth*Media.MP(:,3);
-Media.MP(1,:) = [-45,0,30,1.0];
-Media.MP(2,:) = [-15,0,30,1.0];
-Media.MP(3,:) = [15,0,30,1.0];
-Media.MP(4,:) = [45,0,30,1.0];
-Media.MP(5,:) = [-15,0,60,1.0];
-Media.MP(6,:) = [-15,0,90,1.0];
-Media.MP(7,:) = [-15,0,120,1.0];
-Media.MP(8,:) = [-15,0,150,1.0];
-Media.MP(9,:) = [-45,0,120,1.0];
-Media.MP(10,:) = [15,0,120,1.0];
-Media.MP(11,:) = [45,0,120,1.0];
 Media.MP(12,:) = [-10,0,69,1.0];
-Media.MP(13,:) = [-5,0,75,1.0];
-Media.MP(14,:) = [0,0,78,1.0];
-Media.MP(15,:) = [5,0,80,1.0];
-Media.MP(16,:) = [10,0,81,1.0];
-Media.MP(17,:) = [-75,0,120,1.0];
-Media.MP(18,:) = [75,0,120,1.0];
-Media.MP(19,:) = [-15,0,180,1.0];
-Media.numPoints = 19;
+
+Media.numPoints = 1;
 Media.attenuation = -0.5;
-Media.function = 'movePoints';
+Media.function = 'circleMovement';
 
 % Specify Resources.
 Resource.RcvBuffer(1).datatype = 'int16';
@@ -182,7 +162,7 @@ Process(1).Parameters = {'imgbufnum',1,...   % number of buffer to process.
                          'framenum',-1,...   % (-1 => lastFrame)
                          'pdatanum',1,...    % number of PData structure to use
                          'pgain',1.0,...            % pgain is image processing gain
-                         'reject',50,...      % reject level
+                         'reject',3,...      % reject level  50
                          'persistMethod','simple',...
                          'persistLevel',pers,...
                          'interpMethod','4pt',...
@@ -234,8 +214,6 @@ for i = 1:Resource.RcvBuffer(1).numFrames
        nsc = nsc + 1;
     n = n+1;
 
-
-    
     Event(n).info = 'Reconstruct';
     Event(n).tx = 0;
     Event(n).rcv = 0;
@@ -296,16 +274,57 @@ return
 %EF#1
 myProcFunction(RData)
 persistent myHandle
+
+P = evalin('base','P');
 if isempty(myHandle)||~ishandle(myHandle)
     figure;
     myHandle = axes('XLim', [0,size(RData,2)], 'YLim', [0, size(RData,1)],...
-    'NextPlot', 'replacechildren');
+    'Ydir','reverse','NextPlot', 'replacechildren');
 end
-keyboard
 %Plot the RF data
-imagesc(myHandle,RData);
-colormap(gray)
+
+set(myHandle,'XLim',[0,size(RData,2)],'YLim',[0,size(RData,1)])
+
+%%%% image process and plot bounding box
+level = 0.2;
+gray_img = mat2gray(RData);
+filted = medfilt2(gray_img);
+B_img = im2bw(filted,level);
+se = strel('rectangle', [3,3]);
+filled_img = imclose(B_img,se);
+
+Iregion = regionprops(filled_img, 'centroid');
+[labeled, numObjects] = bwlabel(filled_img, 4);
+stats = regionprops(labeled,'Eccentricity','Area', 'BoundingBox');
+areas = [stats.Area];
+maximum = max(areas);
+[max_idx,~]=find(areas==maximum);
+eccentricities = [stats.Eccentricity];
+idxOfObj = find(eccentricities);
+statsDetects = stats(idxOfObj);
+
+imagesc(myHandle,gray_img);
+colormap(gray(256))
+hold on
+h = rectangle('Position', statsDetects(max_idx).BoundingBox);
+center = [statsDetects(max_idx).BoundingBox(1)+0.5*statsDetects(max_idx).BoundingBox(3),statsDetects(max_idx).BoundingBox(2)+0.5*statsDetects(max_idx).BoundingBox(4)];
+string = sprintf('(%0.2f,%0.2f)', center(1)*P.pxl2mm,center(2)*P.pxl2mm); 
+text(statsDetects(max_idx).BoundingBox(1)-12,statsDetects(max_idx).BoundingBox(2)+statsDetects(max_idx).BoundingBox(4)-10,string,'Color','white','FontSize',5);
+set(h, 'EdgeColor', [0.75 0 0],'LineWidth', 1);
+% center = [];
+% for idx = 1 : length(idxOfObj)
+%     h = rectangle('Position', statsDetects(idx).BoundingBox);
+%     center = [center; statsDetects(idx).BoundingBox(1)+0.5*statsDetects(idx).BoundingBox(3),statsDetects(idx).BoundingBox(2)+0.5*statsDetects(idx).BoundingBox(4)];
+%     string = sprintf('(%0.2f,%0.2f)', center(idx,1)*P.pxl2mm,center(idx,2)*P.pxl2mm); 
+%     text(statsDetects(idx).BoundingBox(1)-16,statsDetects(idx).BoundingBox(2)+statsDetects(idx).BoundingBox(4)-10,string,'Color','white','FontSize',5);
+%     set(h, 'EdgeColor', [0.75 0 0],'LineWidth', 1);
+%     hold on;
+% end
+hold off
+title(sprintf('Pxl2mm = %0.3f',P.pxl2mm))
 drawnow
+
+% keyboard % debug
 %EF#1
 
 
@@ -340,10 +359,11 @@ if isfield(Resource.DisplayWindow(1),'AxesUnits')&&~isempty(Resource.DisplayWind
         P.endDepth = UIValue*scaleToWvl;
     end
 end
-assignin('base','P',P);
-
 PData = evalin('base','PData');
 PData(1).Size(1) = 10 + ceil((P.endDepth-P.startDepth)/PData(1).PDelta(3));
+P.pxl2mm = (P.endDepth-P.startDepth)*P.wl2mm/ceil((P.endDepth-P.startDepth)/PData(1).PDelta(3)); %pixel size in [mm]
+assignin('base','P',P);
+
 PData(1).Region = struct(...
             'Shape',struct('Name','SectorFT', ...
             'Position',[0,0,-P.radius], ...
