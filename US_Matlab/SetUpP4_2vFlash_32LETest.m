@@ -22,7 +22,7 @@
 % 12/12/2018 Modified for synthetic aperture receive acquisition.
 
 clear all
-
+P.iter = 1;
 P.startDepth = 0;
 P.endDepth = 160;   % Acquisition depth in wavelengths
 
@@ -70,7 +70,7 @@ PData(1).Region = computeRegions(PData(1));
 
 % Specify Media.
 % Set up Media points
-Media.MP(12,:) = [-10,0,69,1.0];
+Media.MP(1,:) = [-10,0,69,1.0];
 
 Media.numPoints = 1;
 Media.attenuation = -0.5;
@@ -323,7 +323,9 @@ set(h, 'EdgeColor', [0.75 0 0],'LineWidth', 1);
 hold off
 title(sprintf('Pxl2mm = %0.3f',P.pxl2mm))
 drawnow
-
+saveas(gcf,[pwd '/Verasonics_training/Images/scene',num2str(P.iter),'.png'])
+P.iter = P.iter+1;
+assignin('base','P', P);
 % keyboard % debug
 %EF#1
 
